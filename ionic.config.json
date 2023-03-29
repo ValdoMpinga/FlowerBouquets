@@ -1,0 +1,7 @@
+{
+  "name": "FlowerBouquets",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
