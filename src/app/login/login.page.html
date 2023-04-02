@@ -1,13 +1,64 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>login</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">login</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <img
+          class="app-logo"
+          src="assets/icons/FlowerBouquetsLogo.svg"
+          alt="App logo"
+        />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <h1>Login</h1>
+
+  <div class="input-container">
+    <ion-item class="inputField" fill="solid">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" ngModel email></ion-input>
+      <ion-note slot="helper" class="helper">Enter a valid email</ion-note>
+      <ion-note class="danger" slot="error">Invalid email</ion-note>
+    </ion-item>
+
+    <ion-item class="inputField" fill="solid">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" ngModel password></ion-input>
+      <ion-note slot="helper" class="helper">Enter your password</ion-note>
+      <ion-note class="danger" slot="error">Invalid password</ion-note>
+    </ion-item>
+
+    <ion-button class="login-button" fill="solid">Login</ion-button>
+
+    <p class="login-option">Or login with:</p>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <img
+            class="google-logo"
+            src="assets/icons/Google.svg"
+            alt="App logo"
+          />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="sign-up">
+    <p>
+      Dont have an account? <span><a href="">Sign up!</a> </span>
+    </p>
+  </div>
 </ion-content>
