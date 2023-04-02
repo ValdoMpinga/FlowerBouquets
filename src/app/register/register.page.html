@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create an account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button default-href="/login"></ion-back-button>
+      </ion-buttons>
+      <ion-title size="large">Create an account</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="register-input-container">
+    <ion-item fill="solid">
+      <ion-label position="floating">Full name</ion-label>
+      <ion-input type="name" placeholder="Enter full name"></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" placeholder="Enter email"></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" placeholder="Enter password"></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Confirm password</ion-label>
+      <ion-input
+        type="password"
+        placeholder="Re enter the password"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button class="register-button" fill="solid">Register</ion-button>
+
+    <p class="register-option">Or register with:</p>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <img
+            class="google-logo"
+            src="assets/icons/Google.svg"
+            alt="App logo"
+          />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+    <div class="sign-up">
+    <p>
+      Already have an account?   <span><a href="">Sign un!</a> </span>
+    </p>
+  </div>
+</ion-content>
