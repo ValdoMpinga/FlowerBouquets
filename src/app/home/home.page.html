@@ -41,48 +41,36 @@
     </ion-row>
   </ion-grid>
 
-  <h1>Trendings🔥</h1>
+  <h1>Trending🔥</h1>
 
-  <!-- <ion-content scroll-y="true">
-    <ion-grid>
-      <ion-row>
-        <ion-col *ngFor="let item of items">
-          <ion-card>
-            <ion-card-header>
-              <ion-card-title>{{item.title}}</ion-card-title>
-            </ion-card-header>
-            <ion-card-content> {{item.description}} </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-content> -->
-
-  <!-- <ion-card *ngFor="let item of items">
-        <ion-card-header>
-          <ion-card-title>{{item.title}}</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          {{item.description}}
-        </ion-card-content>
-      </ion-card> -->
-
-  <swiper-container>
-    <swiper-slide *ngFor="let item of items">
-        <ion-card >
-        <ion-card-header>
-          <ion-card-title>{{item.title}}</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          {{item.description}}
-        </ion-card-content>
-      </ion-card>
-      
-    </swiper-slide>
-
-  </swiper-container>
+  <ion-row scrollX="true" class="scroll-items">
+    <ion-col *ngFor="let item of items">
+      <app-flowers-card
+        [flowersImage]="item.image"
+        [flowersName]="item.name"
+        [flowersPrice]="item.price"
+      ></app-flowers-card>
+    </ion-col>
+  </ion-row>
 
   <h1>Flowers for you 🌸</h1>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col
+        *ngFor="let item of items.reverse()"
+        size="6"
+        size-md="4"
+        size-lg="2"
+      >
+        <app-flowers-card
+          [flowersImage]="item.image"
+          [flowersName]="item.name"
+          [flowersPrice]="item.price"
+        ></app-flowers-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="flower-bouquets-yellow">

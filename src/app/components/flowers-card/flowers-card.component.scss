@@ -1,0 +1,24 @@
+ion-card {
+  width: 40vw;
+  text-align: center;
+  background-color: transparent;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+img {
+  width: 40vw;
+  height: 40vw;
+  border-radius: 10px;
+}
+
+ion-card-title {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+ion-card-subtitle {
+  font-size: medium;
+  color: var(--ion-color-flower-bouquets-yellow);
+}

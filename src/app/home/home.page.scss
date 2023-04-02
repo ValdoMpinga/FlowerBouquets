@@ -13,7 +13,6 @@ ion-toolbar {
   height: 40px;
 }
 
-
 ion-menu-button {
   font-size: 2em;
   width: 50px;
@@ -51,6 +50,7 @@ h1 {
 ion-fab-button {
   width: 80px;
   height: 80px;
+  margin-bottom: 10px;
 }
 
 ion-icon {
@@ -58,3 +58,12 @@ ion-icon {
   width: 40px;
   height: 40px;
 }
+
+
+.scroll-items {
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow-x: scroll !important;
+  overflow-y: hidden;
+}
+
