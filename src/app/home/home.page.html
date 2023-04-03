@@ -8,12 +8,16 @@
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-icon class="cart-icon" slot="start" name="cart" ion-ripple-effect>
-      </ion-icon>
+      <ion-menu-button class="cart-button"[routerLink]="['/cart']" size="large" auto-hide="false">
+        <ion-icon class="cart-icon" name="cart"></ion-icon>
+        <ion-badge color="danger">0</ion-badge>
+      </ion-menu-button>
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-menu-button size="large" auto-hide="false"></ion-menu-button>
+      <ion-menu-button auto-hide="false">
+        <ion-icon class="menu-icon" name="menu"></ion-icon>
+      </ion-menu-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -82,7 +86,7 @@
       <ion-fab-button class="aux-fab" [routerLink]="['/reminder-form']">
         <ion-icon name="add-outline"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button class="aux-fab" >
+      <ion-fab-button class="aux-fab">
         <ion-icon name="list-outline"></ion-icon>
       </ion-fab-button>
     </ion-fab-list>

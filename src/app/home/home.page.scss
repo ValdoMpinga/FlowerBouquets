@@ -8,16 +8,25 @@ ion-toolbar {
   margin-left: 10px;
 }
 
+.cart-button{
+  width: 70px;
+}
 .cart-icon {
-  width: 35px;
-  height: 40px;
+  font-size: 1.5em;
+  color: var(--ion-color-flower-bouquets-black);
 }
 
-ion-menu-button {
+.menu-icon {
   font-size: 2em;
-  width: 50px;
-  height: 50px;
+  color: var(--ion-color-flower-bouquets-black);
 }
+
+ion-badge{
+  font-size: 15px;
+  // padding-right: 9px;
+}
+
+
 
 .search-bar-container {
   margin-top: 20px;
@@ -35,8 +44,11 @@ ion-searchbar.searchbar {
   --color: black;
 }
 
-ion-menu-button {
-  --color: black
+.aux-fab {
+  width: 40px;
+  height: 40px;
+  margin-top: 20px;
+  --background: var(--ion-color-flower-bouquets-green);
 }
 
 ion-grid {
@@ -54,7 +66,13 @@ h1 {
   margin-top: 30px;
   margin-left: 10px;
   color: var(--ion-color-flower-bouquets-green);
+}
 
+.scroll-items {
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  overflow-x: scroll !important;
+  overflow-y: hidden;
 }
 
 ion-fab-button {
@@ -63,26 +81,6 @@ ion-fab-button {
   margin-bottom: 10px;
 }
 
-.aux-fab {
-  width: 40px;
-  height: 40px;
-  margin-top: 20px;
-    --background: var(--ion-color-flower-bouquets-green);
-}
-
-ion-fab-list{
-  margin-left:55px ;
-}
-
-ion-icon {
-  color: var(--ion-color-flower-bouquets-black);
-  width: 40px;
-  height: 40px;
-}
-
-.scroll-items {
-  justify-content: flex-start;
-  flex-wrap: nowrap;
-  overflow-x: scroll !important;
-  overflow-y: hidden;
+ion-fab-list {
+  margin-left: 55px;
 }

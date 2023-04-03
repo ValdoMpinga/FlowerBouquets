@@ -26,6 +26,10 @@ const routes: Routes = [
     path: 'reminder-form',
     loadChildren: () => import('./reminder-form/reminder-form.module').then( m => m.ReminderFormPageModule)
   },
+  {
+    path: 'cart',
+    loadChildren: () => import('./cart/cart.module').then( m => m.CartPageModule)
+  },
 ];
 
 @NgModule({
