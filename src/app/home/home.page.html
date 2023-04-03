@@ -55,22 +55,25 @@
 
   <h1>Flowers for you 🌸</h1>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col
-        *ngFor="let item of items.reverse()"
-        size="6"
-        size-md="4"
-        size-lg="2"
-      >
-        <app-flowers-card
-          [flowersImage]="item.image"
-          [flowersName]="item.name"
-          [flowersPrice]="item.price"
-        ></app-flowers-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+<ion-grid>
+  <ion-row class="ion-justify-content-center ion-align-items-center">
+    <ion-col
+      *ngFor="let item of items.reverse()"
+      size="6"
+      size-md="4"
+      size-lg="2"
+    >
+      <app-flowers-card
+      class="app-flowers-card"
+        [flowersImage]="item.image"
+        [flowersName]="item.name"
+        [flowersPrice]="item.price"
+      ></app-flowers-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button color="flower-bouquets-yellow">
