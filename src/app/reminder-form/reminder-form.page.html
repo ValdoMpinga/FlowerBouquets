@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button default-href="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Create reminder</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-menu-button auto-hide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button default-href="/login"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Create reminder</ion-title>
+
+      <ion-buttons slot="end">
+        <ion-menu-button size="large" auto-hide="false"></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="register-input-container">
+    <ion-item fill="solid">
+      <ion-label position="floating">Title</ion-label>
+      <ion-input type="name" placeholder="Enter full name"></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Date and time</ion-label>
+      <ion-input
+        type="datetime-local"
+        placeholder="Enter email"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Description</ion-label>
+      <ion-input type="password" placeholder="Enter password"></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-select placeholder="Select occasion">
+        <ion-select-option value="apples">Birthday</ion-select-option>
+        <ion-select-option value="oranges"
+          >Wedding aniversary</ion-select-option
+        >
+        <ion-select-option value="bananas">Just love</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-select placeholder="Select reminder frequency">
+        <ion-select-option value="once">Just this time</ion-select-option>
+        <ion-select-option value="every-week">Every Week</ion-select-option>
+        <ion-select-option value="every-month">Every month</ion-select-option>
+        <ion-select-option value="every-year">Every year</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-select placeholder="Select the reminder action">
+        <ion-select-option value="apples">Birthday</ion-select-option>
+        <ion-select-option value="oranges"
+          >Wedding aniversary</ion-select-option
+        >
+        <ion-select-option value="bananas">Just love</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button class="register-button" fill="solid">Create</ion-button>
+  </div>
+</ion-content>

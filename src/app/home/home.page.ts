@@ -69,4 +69,5 @@ export class HomePage {
         'https://images.pexels.com/photos/1381679/pexels-photo-1381679.jpeg?auto=compress&cs=tinysrgb&w=800',
     },
   ];
+
 }
