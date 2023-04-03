@@ -27,6 +27,7 @@
 
   <div class="search-bar-container">
     <ion-searchbar
+      class="searchbar"
       animated="true"
       show-clear-button="focus"
       clear-icon="trash-bin"
@@ -56,7 +57,7 @@
   <h1>Flowers for you 🌸</h1>
 
   <ion-grid>
-    <ion-row>
+    <ion-row class="ion-justify-content-center ion-align-items-center">
       <ion-col
         *ngFor="let item of items.reverse()"
         size="6"
@@ -64,6 +65,7 @@
         size-lg="2"
       >
         <app-flowers-card
+          class="app-flowers-card"
           [flowersImage]="item.image"
           [flowersName]="item.name"
           [flowersPrice]="item.price"

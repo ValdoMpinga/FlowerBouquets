@@ -9,7 +9,7 @@ ion-toolbar {
 }
 
 .cart-icon {
-  width: 40px;
+  width: 35px;
   height: 40px;
 }
 
@@ -27,8 +27,16 @@ ion-menu-button {
   align-items: center;
 }
 
-ion-searchbar {
+ion-searchbar.searchbar {
   width: 90vw;
+  --border-radius: 10px;
+  --background: white;
+  --placeholder-color: rgb(115, 108, 108);
+  --color: black;
+}
+
+ion-menu-button {
+  --color: black
 }
 
 ion-grid {
@@ -36,8 +44,10 @@ ion-grid {
 }
 
 ion-col {
-  color: #fff;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
@@ -59,11 +69,9 @@ ion-icon {
   height: 40px;
 }
 
-
 .scroll-items {
   justify-content: flex-start;
   flex-wrap: nowrap;
   overflow-x: scroll !important;
   overflow-y: hidden;
 }
-
