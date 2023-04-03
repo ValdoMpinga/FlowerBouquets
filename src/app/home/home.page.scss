@@ -33,10 +33,9 @@ ion-searchbar.searchbar {
   --background: white;
   --placeholder-color: rgb(115, 108, 108);
   --color: black;
-
 }
 
-ion-menu-button{
+ion-menu-button {
   --color: black
 }
 
@@ -46,9 +45,9 @@ ion-grid {
 
 ion-col {
   text-align: center;
-   display: flex;
-   justify-content: center;
-   align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
@@ -76,5 +75,3 @@ ion-icon {
   overflow-x: scroll !important;
   overflow-y: hidden;
 }
-
-
