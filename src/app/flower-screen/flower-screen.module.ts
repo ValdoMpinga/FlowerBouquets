@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
 import { IonicModule } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
+import { FlowerScreenPage } from './flower-screen.page';
 
 import { FlowerScreenPageRoutingModule } from './flower-screen-routing.module';
-
-import { FlowerScreenPage } from './flower-screen.page';
+import { SideMenuModule } from '../components/side-menu/side-menu.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FlowerScreenPageRoutingModule
+    FlowerScreenPageRoutingModule,
+    SideMenuModule,
   ],
-  declarations: [FlowerScreenPage]
+  declarations: [FlowerScreenPage],
 })
 export class FlowerScreenPageModule {}

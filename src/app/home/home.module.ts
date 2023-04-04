@@ -6,9 +6,16 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { FlowersCardComponent } from '../components/flowers-card/flowers-card.component';
+import { SideMenuModule } from '../components/side-menu/side-menu.module';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    HomePageRoutingModule,
+    SideMenuModule,
+  ],
   declarations: [HomePage, FlowersCardComponent],
 })
 export class HomePageModule {}
