@@ -8,7 +8,12 @@
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <ion-menu-button class="cart-button"[routerLink]="['/cart']" size="large" auto-hide="false">
+      <ion-menu-button
+        class="cart-button"
+        [routerLink]="['/cart']"
+        size="large"
+        auto-hide="false"
+      >
         <ion-icon class="cart-icon" name="cart"></ion-icon>
         <ion-badge color="danger">0</ion-badge>
       </ion-menu-button>

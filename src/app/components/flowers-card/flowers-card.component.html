@@ -1,11 +1,7 @@
-<ion-card
-button="true">
-  <img
-    alt="Flowers"
-    src={{flowersImage}}
-  />
+<ion-card button="true" [routerLink]="['/flower-screen']">
+  <img alt="Flowers" src="{{ flowersImage }}" />
   <ion-card-header>
-    <ion-card-title>{{flowersName}}</ion-card-title>
-    <ion-card-subtitle>{{flowersPrice}}</ion-card-subtitle>
+    <ion-card-title>{{ flowersName }}</ion-card-title>
+    <ion-card-subtitle>{{ flowersPrice }}</ion-card-subtitle>
   </ion-card-header>
-</ion-card> 
+</ion-card>
