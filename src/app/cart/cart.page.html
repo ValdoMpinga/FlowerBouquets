@@ -25,5 +25,34 @@
         <ion-icon class="menu-icon" name="menu"></ion-icon>
       </ion-menu-button>
     </ion-buttons>
-  </ion-header>\
+  </ion-header>
+
+  <div class="items-container">
+    <app-cart-item
+      *ngFor="let item of items"
+      class="cart-item"
+      [flowersImage]="item.image"
+      [flowersName]="item.name"
+      [flowersPrice]="item.price"
+      [flowersQuantity]="5"
+    ></app-cart-item>
+  </div>
+
+  <div class="extras-button-container">
+    <ion-button class="extras-button"> Add extras to cart </ion-button>
+  </div>
+
+  <ion-item fill="solid">
+    <ion-select placeholder="Select the pickup location">
+      <ion-select-option value="home">At home</ion-select-option>
+      <ion-select-option value="store">At the store</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <p>Total: €€€</p>
+
+
+   <div class="pay-button-container">
+    <ion-button class="pay-button"> Pay </ion-button>
+  </div>
 </ion-content>

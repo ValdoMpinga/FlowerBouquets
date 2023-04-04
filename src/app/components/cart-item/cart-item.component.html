@@ -1,0 +1,37 @@
+<div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="auto" class="image-container">
+        <img
+          src="{{ flowersImage }}"
+          alt="The Wisconsin State Capitol building in Madison, WI at night"
+        />
+      </ion-col>
+      <ion-col offset="0.4">
+        <ion-row class="flower-name">
+          {{ flowersName }}
+        </ion-row>
+        <ion-row class="flower-price"> {{ flowersPrice }}</ion-row>
+        <ion-row>
+          <ion-item class="quantity-select-container">
+            <ion-select [(ngModel)]="flowersQuantity">
+              <ion-select-option
+                *ngFor="let value of quantityValues"
+                [value]="value"
+                >{{ value }}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+          <ion-row> </ion-row
+          ><ion-row>
+            <ion-button>
+              <ion-icon class="trash-icon" name="trash-bin"></ion-icon>
+            </ion-button>
+          </ion-row>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <hr />
+</div>

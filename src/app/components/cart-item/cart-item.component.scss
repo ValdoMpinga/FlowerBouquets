@@ -1,0 +1,54 @@
+
+ion-grid{
+  margin-top: 20px;
+}
+
+.image-container {
+  display: inline-block;
+}
+
+img {
+  width: 120px;
+  height: 120px;
+  margin-left: 10px;
+}
+
+.flower-name {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.flower-price {
+  margin-top: 10px;
+  font-size: 18px;
+  color: var(--ion-color-flower-bouquets-yellow);
+}
+
+.quantity-select-container {
+  margin-top: 13px;
+}
+
+
+ion-button {
+  --background: transparent;
+  --box-shadow: none;
+  margin-left: 10px;
+  // margin-top: 16px;
+  width: 5em;
+  height: 5em;
+}
+
+.trash-icon {
+  font-size: 2.5em;
+  margin-top: 0px;
+  color: var(--ion-color-flower-bouquets-pink);
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: white;
+  width: 90%;
+  margin: 0 auto;
+}
+

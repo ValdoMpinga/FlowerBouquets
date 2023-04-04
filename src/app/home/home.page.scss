@@ -8,25 +8,23 @@ ion-toolbar {
   margin-left: 10px;
 }
 
-.cart-button{
+.cart-button {
   width: 70px;
 }
-.cart-icon {
+
+.cart-icon, ion-icon{
   font-size: 1.5em;
   color: var(--ion-color-flower-bouquets-black);
 }
 
 .menu-icon {
-  font-size: 2em;
+  font-size: 3em;
   color: var(--ion-color-flower-bouquets-black);
 }
 
-ion-badge{
+ion-badge {
   font-size: 15px;
-  // padding-right: 9px;
 }
-
-
 
 .search-bar-container {
   margin-top: 20px;

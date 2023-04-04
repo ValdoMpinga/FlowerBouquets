@@ -1,3 +1,48 @@
 ion-toolbar {
   --background: var(--ion-color-flower-bouquets-purple);
 }
+
+.items-container {
+  height: 50%;
+  // height: 420px;
+  overflow: auto;
+}
+
+ion-item {
+  width: 80vw;
+  margin-top: 40px;
+  margin-left: 20px;
+}
+
+.extras-button-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.extras-button {
+  width: 230px;
+  height: 50px;
+  --background: var(--ion-color-flower-bouquets-green);
+  --color: var(--ion-color-flower-bouquets-black);
+}
+
+.pay-button-container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.pay-button {
+  width: 150px;
+  height: 50px;
+  --background: var(--ion-color-flower-bouquets-yellow);
+  --color: var(--ion-color-flower-bouquets-black);
+}
+
+p {
+  margin-top: 40px;
+  margin-left: 20px;
+  color: var(--ion-color-flower-bouquets-white);
+  font-size: 20px
+}
