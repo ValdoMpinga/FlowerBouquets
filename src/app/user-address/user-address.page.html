@@ -1,13 +1,37 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>user-address</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">user-address</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h1>Add your address</h1>
+
+  <p>
+    It's important to add the address to be able to receive the flowers at home,
+    you will be able to change it if necessary!
+  </p>
+
+  <div class="address-input-container">
+    <ion-item fill="solid">
+      <ion-label position="floating">Address</ion-label>
+      <ion-input type="street-address" placeholder="Enter your address"></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">City</ion-label>
+      <ion-input type="address-level2" placeholder="Enter your city"></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">State</ion-label>
+      <ion-input type="address-level1" placeholder="Enter your state"></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Postal code</ion-label>
+      <ion-input
+        type="postal-code"
+        placeholder="Enter you postal code"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button class="register-button" fill="solid">Add</ion-button>
+
+
+  </div>
 </ion-content>

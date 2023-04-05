@@ -6,8 +6,8 @@ const routes: Routes = [
     // path: 'home', loadChildren: () => import('./home/home.module').then((m) => m.HomePageModule),
     path: 'home',
     loadChildren: () =>
-      import('./email-verification/email-verification.module').then(
-        (m) => m.EmailVerificationPageModule
+      import('./user-address/user-address.module').then(
+        (m) => m.UserAddressPageModule
       ),
   },
   {
