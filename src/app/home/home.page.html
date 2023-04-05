@@ -1,4 +1,4 @@
-<app-side-menu/>
+<app-side-menu />
 <div class="ion-page" id="main-content">
   <ion-header [translucent]="true">
     <ion-toolbar>
@@ -9,16 +9,13 @@
         ></ion-icon>
       </ion-buttons>
 
-      <ion-buttons slot="end">
-        <ion-menu-button
-          class="cart-button"
+      <ion-buttons class="cart-button" slot="end">
+        <ion-icon
+          class="cart-icon cart-button"
           [routerLink]="['/cart']"
-          size="large"
-          auto-hide="false"
-        >
-          <ion-icon class="cart-icon" name="cart"></ion-icon>
-          <ion-badge color="danger">0</ion-badge>
-        </ion-menu-button>
+          name="cart"
+        ></ion-icon>
+        <ion-badge color="danger">0</ion-badge>
       </ion-buttons>
 
       <ion-buttons slot="end">
@@ -48,8 +45,8 @@
 
     <ion-grid>
       <ion-row>
-        <ion-col>Category</ion-col>
-        <ion-col>Ocassions</ion-col>
+        <ion-col class="categories">Categories</ion-col>
+        <ion-col  class="ocassions">Ocassions</ion-col>
       </ion-row>
     </ion-grid>
 
@@ -58,6 +55,7 @@
     <ion-row scrollX="true" class="scroll-items">
       <ion-col *ngFor="let item of items">
         <app-flowers-card
+          [routerLink]="['/flower-screen']"
           [flowersImage]="item.image"
           [flowersName]="item.name"
           [flowersPrice]="item.price"
@@ -76,6 +74,7 @@
           size-lg="2"
         >
           <app-flowers-card
+            [routerLink]="['/flower-screen']"
             class="app-flowers-card"
             [flowersImage]="item.image"
             [flowersName]="item.name"
@@ -93,7 +92,7 @@
         <ion-fab-button class="aux-fab" [routerLink]="['/reminder-form']">
           <ion-icon name="add-outline"></ion-icon>
         </ion-fab-button>
-        <ion-fab-button class="aux-fab">
+        <ion-fab-button class="aux-fab" [routerLink]="['/reminders-list']">
           <ion-icon name="list-outline"></ion-icon>
         </ion-fab-button>
       </ion-fab-list>

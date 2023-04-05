@@ -1,0 +1,26 @@
+ion-toolbar,
+ion-radio-group,
+ion-list,
+ion-radio,
+ion-label,
+ion-toolbar,
+ion-toolbar,
+ion-toolbar {
+  --background: var(--ion-color-flower-bouquets-purple);
+}
+
+.search-bar-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+ion-searchbar.searchbar {
+  width: 90vw;
+  --border-radius: 10px;
+  --background: white;
+  --placeholder-color: rgb(115, 108, 108);
+  --color: black;
+}

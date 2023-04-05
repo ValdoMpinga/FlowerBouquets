@@ -1,58 +1,60 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button default-href="/home"></ion-back-button>
-      <ion-title>Cart (0)</ion-title>
-    </ion-buttons>
+<app-side-menu />
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button default-href="/home"></ion-back-button>
+        <ion-title>Cart (0)</ion-title>
+      </ion-buttons>
 
-    <ion-buttons slot="end">
-      <ion-menu-button auto-hide="false">
-        <ion-icon class="menu-icon" name="menu"></ion-icon>
-      </ion-menu-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-buttons slot="start">
-      <ion-back-button default-href="/home"></ion-back-button>
-      <ion-title>Cart (0)</ion-title>
-    </ion-buttons>
-
-    <ion-buttons slot="end">
-      <ion-menu-button auto-hide="false">
-        <ion-icon class="menu-icon" name="menu"></ion-icon>
-      </ion-menu-button>
-    </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-menu-button auto-hide="false">
+          <ion-icon class="menu-icon" name="menu"></ion-icon>
+        </ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
   </ion-header>
 
-  <div class="items-container">
-    <app-cart-item
-      *ngFor="let item of items"
-      class="cart-item"
-      [flowersImage]="item.image"
-      [flowersName]="item.name"
-      [flowersPrice]="item.price"
-      [flowersQuantity]="5"
-    ></app-cart-item>
-  </div>
+  <ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <ion-buttons slot="start">
+        <ion-back-button default-href="/home"></ion-back-button>
+        <ion-title>Cart (0)</ion-title>
+      </ion-buttons>
 
-  <div class="extras-button-container">
-    <ion-button class="extras-button"> Add extras to cart </ion-button>
-  </div>
+      <ion-buttons slot="end">
+        <ion-menu-button auto-hide="false">
+          <ion-icon class="menu-icon" name="menu"></ion-icon>
+        </ion-menu-button>
+      </ion-buttons>
+    </ion-header>
 
-  <ion-item fill="solid">
-    <ion-select placeholder="Select the pickup location">
-      <ion-select-option value="home">At home</ion-select-option>
-      <ion-select-option value="store">At the store</ion-select-option>
-    </ion-select>
-  </ion-item>
+    <div class="items-container">
+      <app-cart-item
+        *ngFor="let item of items"
+        class="cart-item"
+        [flowersImage]="item.image"
+        [flowersName]="item.name"
+        [flowersPrice]="item.price"
+        [flowersQuantity]="5"
+      ></app-cart-item>
+    </div>
 
-  <p>Total: €€€</p>
+    <div class="extras-button-container">
+      <ion-button class="extras-button"> Add extras to cart </ion-button>
+    </div>
 
+    <ion-item fill="solid">
+      <ion-select placeholder="Select the pickup location">
+        <ion-select-option value="home">At home</ion-select-option>
+        <ion-select-option value="store">At the store</ion-select-option>
+      </ion-select>
+    </ion-item>
 
-   <div class="pay-button-container">
-    <ion-button class="pay-button"> Pay </ion-button>
-  </div>
-</ion-content>
+    <p>Total: €€€</p>
+
+    <div class="pay-button-container">
+      <ion-button class="pay-button"> Pay </ion-button>
+    </div>
+  </ion-content>
+</div>

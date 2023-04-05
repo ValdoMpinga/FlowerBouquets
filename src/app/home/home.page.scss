@@ -9,11 +9,12 @@ ion-toolbar {
 }
 
 .cart-button {
-  width: 70px;
+  margin-right: 5px;
 }
 
-.cart-icon, ion-icon{
-  font-size: 1.5em;
+.cart-icon,
+ion-icon {
+  font-size: 2em;
   color: var(--ion-color-flower-bouquets-black);
 }
 
@@ -37,9 +38,22 @@ ion-badge {
 ion-searchbar.searchbar {
   width: 90vw;
   --border-radius: 10px;
-  --background: white;
+  --background: var(--ion-color-flower-bouquets-white);
   --placeholder-color: rgb(115, 108, 108);
   --color: black;
+}
+
+.categories {
+  text-decoration: overline;
+  text-decoration-color: var(--ion-color-flower-bouquets-yellow);
+  font-size: 20px;
+  color: var(--ion-color-flower-bouquets-white);
+}
+
+.ocassions {
+  font-size: 20px;
+  color: var(--ion-color-flower-bouquets-white);
+
 }
 
 .aux-fab {
@@ -83,6 +97,6 @@ ion-fab-list {
   margin-left: 55px;
 }
 
-.alarm-icon{
-  font-size: 2em;
+.alarm-icon {
+  font-size: 1.6em;
 }

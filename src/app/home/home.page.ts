@@ -72,8 +72,5 @@ export class HomePage {
 
   constructor(private menu: MenuController) {}
 
-  ionViewDidEnter() {
-    this.menu.enable(true, 'app-side-menu');
-  }
+
 }
-//http://localhost:8106/home

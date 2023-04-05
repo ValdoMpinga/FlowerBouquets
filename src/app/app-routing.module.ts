@@ -53,6 +53,13 @@ const routes: Routes = [
         (m) => m.UserAddressPageModule
       ),
   },
+  {
+    path: 'reminders-list',
+    loadChildren: () =>
+      import('./reminders-list/reminders-list.module').then(
+        (m) => m.RemindersListPageModule
+      ),
+  },
 ];
 
 @NgModule({
