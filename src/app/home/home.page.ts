@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import Swiper from 'swiper';
+import { Component } from '@angular/core';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -70,4 +70,10 @@ export class HomePage {
     },
   ];
 
+  constructor(private menu: MenuController) {}
+
+  ionViewDidEnter() {
+    this.menu.enable(true, 'app-side-menu');
+  }
 }
+//http://localhost:8106/home

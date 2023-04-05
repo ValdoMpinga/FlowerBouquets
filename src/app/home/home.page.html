@@ -1,99 +1,102 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-icon
-        class="app-icon"
-        src="assets/icons/FlowerBouquetsLogo.svg"
-      ></ion-icon>
-    </ion-buttons>
+<app-side-menu/>
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-icon
+          class="app-icon"
+          src="assets/icons/FlowerBouquetsLogo.svg"
+        ></ion-icon>
+      </ion-buttons>
 
-    <ion-buttons slot="end">
-      <ion-menu-button
-        class="cart-button"
-        [routerLink]="['/cart']"
-        size="large"
-        auto-hide="false"
-      >
-        <ion-icon class="cart-icon" name="cart"></ion-icon>
-        <ion-badge color="danger">0</ion-badge>
-      </ion-menu-button>
-    </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-menu-button
+          class="cart-button"
+          [routerLink]="['/cart']"
+          size="large"
+          auto-hide="false"
+        >
+          <ion-icon class="cart-icon" name="cart"></ion-icon>
+          <ion-badge color="danger">0</ion-badge>
+        </ion-menu-button>
+      </ion-buttons>
 
-    <ion-buttons slot="end">
-      <ion-menu-button auto-hide="false">
-        <ion-icon class="menu-icon" name="menu"></ion-icon>
-      </ion-menu-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-buttons slot="end">
-      <ion-menu-button auto-hide="false"></ion-menu-button>
-    </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-menu-button auto-hide="false">
+          <ion-icon class="menu-icon" name="menu"></ion-icon>
+        </ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
   </ion-header>
 
-  <div class="search-bar-container">
-    <ion-searchbar
-      class="searchbar"
-      animated="true"
-      show-clear-button="focus"
-      clear-icon="trash-bin"
-      placeholder="Search"
-    ></ion-searchbar>
-  </div>
+  <ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <ion-buttons slot="end">
+        <ion-menu-button auto-hide="false"></ion-menu-button>
+      </ion-buttons>
+    </ion-header>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>Category</ion-col>
-      <ion-col>Ocassions</ion-col>
-    </ion-row>
-  </ion-grid>
+    <div class="search-bar-container">
+      <ion-searchbar
+        class="searchbar"
+        animated="true"
+        show-clear-button="focus"
+        clear-icon="trash-bin"
+        placeholder="Search"
+      ></ion-searchbar>
+    </div>
 
-  <h1>Trending🔥</h1>
+    <ion-grid>
+      <ion-row>
+        <ion-col>Category</ion-col>
+        <ion-col>Ocassions</ion-col>
+      </ion-row>
+    </ion-grid>
 
-  <ion-row scrollX="true" class="scroll-items">
-    <ion-col *ngFor="let item of items">
-      <app-flowers-card
-        [flowersImage]="item.image"
-        [flowersName]="item.name"
-        [flowersPrice]="item.price"
-      ></app-flowers-card>
-    </ion-col>
-  </ion-row>
+    <h1>Trending🔥</h1>
 
-  <h1>Flowers for you 🌸</h1>
-
-  <ion-grid>
-    <ion-row class="ion-justify-content-center ion-align-items-center">
-      <ion-col
-        *ngFor="let item of items.reverse()"
-        size="6"
-        size-md="4"
-        size-lg="2"
-      >
+    <ion-row scrollX="true" class="scroll-items">
+      <ion-col *ngFor="let item of items">
         <app-flowers-card
-          class="app-flowers-card"
           [flowersImage]="item.image"
           [flowersName]="item.name"
           [flowersPrice]="item.price"
         ></app-flowers-card>
       </ion-col>
     </ion-row>
-  </ion-grid>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button color="flower-bouquets-yellow">
-      <ion-icon name="alarm-outline"></ion-icon>
-    </ion-fab-button>
-    <ion-fab-list side="start">
-      <ion-fab-button class="aux-fab" [routerLink]="['/reminder-form']">
-        <ion-icon name="add-outline"></ion-icon>
+    <h1>Flowers for you 🌸</h1>
+
+    <ion-grid>
+      <ion-row class="ion-justify-content-center ion-align-items-center">
+        <ion-col
+          *ngFor="let item of items.reverse()"
+          size="6"
+          size-md="4"
+          size-lg="2"
+        >
+          <app-flowers-card
+            class="app-flowers-card"
+            [flowersImage]="item.image"
+            [flowersName]="item.name"
+            [flowersPrice]="item.price"
+          ></app-flowers-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button class="alarm-icon" color="flower-bouquets-yellow">
+        <ion-icon name="alarm-outline"></ion-icon>
       </ion-fab-button>
-      <ion-fab-button class="aux-fab">
-        <ion-icon name="list-outline"></ion-icon>
-      </ion-fab-button>
-    </ion-fab-list>
-  </ion-fab>
-</ion-content>
+      <ion-fab-list side="start">
+        <ion-fab-button class="aux-fab" [routerLink]="['/reminder-form']">
+          <ion-icon name="add-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button class="aux-fab">
+          <ion-icon name="list-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
+  </ion-content>
+</div>
