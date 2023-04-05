@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { log } from 'console';
 
 @Component({
   selector: 'app-flower-screen',
@@ -70,7 +72,7 @@ export class FlowerScreenPage implements OnInit {
   ];
   quantity: number = 0;
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   increment() {
     this.quantity++;

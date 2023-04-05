@@ -2,8 +2,10 @@
 <div class="ion-page" id="main-content">
   <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button default-href="/home"></ion-back-button>
+      <ion-buttons  slot="start">
+        <ion-button  [routerLink]="['/home']">
+          <ion-icon name="arrow-back" />
+        </ion-button>
       </ion-buttons>
 
       <ion-buttons slot="end">
@@ -97,7 +99,7 @@
     </div>
 
     <div class="add-to-cart-button-container">
-      <ion-button class="add-to-cart-button"> Add to cart </ion-button>
+      <ion-button  [routerLink]="['/home']"class="add-to-cart-button"> Add to cart </ion-button>
     </div>
   </ion-content>
 </div>
