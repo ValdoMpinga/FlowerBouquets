@@ -1,0 +1,28 @@
+<ion-content [fullscreen]="true">
+  <h1>Email verification</h1>
+
+  <div class="email-icon-container">
+    <ion-icon src="./assets/icons/EmailIcon.svg"></ion-icon>
+  </div>
+
+  <p class="instructions">
+    Please enter the 4 digit code sent to johndoe@gmail.com
+  </p>
+  
+<div class="otp-input">
+    <ion-item fill="solid">
+      <ion-label position="floating">OTP code</ion-label>
+      <ion-input
+        type="number"
+        maxlength="6"
+        placeholder="Enter OTP code"
+      />
+    </ion-item>
+</div>
+
+  <div class="verify-button-container">
+    <ion-button> Verify </ion-button>
+  </div>
+
+  <p class="resend-verif-code">Resend code</p>
+</ion-content>

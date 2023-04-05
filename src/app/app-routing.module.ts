@@ -3,8 +3,12 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    // path: 'home', loadChildren: () => import('./home/home.module').then((m) => m.HomePageModule),
     path: 'home',
-    loadChildren: () => import('./home/home.module').then((m) => m.HomePageModule),
+    loadChildren: () =>
+      import('./email-verification/email-verification.module').then(
+        (m) => m.EmailVerificationPageModule
+      ),
   },
   {
     path: '',
@@ -38,6 +42,20 @@ const routes: Routes = [
     loadChildren: () =>
       import('./flower-screen/flower-screen.module').then(
         (m) => m.FlowerScreenPageModule
+      ),
+  },
+  {
+    path: 'email-verification',
+    loadChildren: () =>
+      import('./email-verification/email-verification.module').then(
+        (m) => m.EmailVerificationPageModule
+      ),
+  },
+  {
+    path: 'user-address',
+    loadChildren: () =>
+      import('./user-address/user-address.module').then(
+        (m) => m.UserAddressPageModule
       ),
   },
 ];
