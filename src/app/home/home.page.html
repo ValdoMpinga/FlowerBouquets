@@ -22,13 +22,59 @@
 <ion-menu contentId="main-content">
   <ion-header>
     <ion-toolbar>
-      <ion-avatar>
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-      </ion-avatar>
+      <div class="contai">
+        <ion-avatar class="avatar">
+          <img class="img" alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <div class="pontos">
+          <div class="dez">10</div>
+          <div class="poin">points</div>
+        </div>
+      </div>
+      
+      <div class="nome">john doe</div>
+      <div class="email">johndoe@gmail.com</div>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="ion-padding">
-    This is the menu content.
+  <ion-content >
+    <div class="buton">
+      <div class="cont">
+        <ion-button fill="clear">
+          <ion-icon name="settings" size="small" ></ion-icon>
+          Settings
+        </ion-button>
+      </div>
+      <div class="cont">
+        <ion-button fill="clear">
+          <ion-icon name="help-buoy-outline"></ion-icon>
+          Help and Suport
+        </ion-button>
+      </div>
+      <div class="cont">
+        <ion-button fill="clear">
+          <ion-icon name="people"></ion-icon>
+          Invite Friends
+        </ion-button>
+      </div>
+      <div class="cont">
+        <ion-button fill="clear">
+          <ion-icon name="log-in-outline"></ion-icon>
+          Logout
+        </ion-button>
+      </div>
+      <div class="cont">
+        <ion-button fill="clear">
+          <ion-icon name="close-circle-outline"></ion-icon>
+          Close
+        </ion-button>
+      </div>
+      <div class="cont">
+        <ion-button fill="clear">
+          <ion-icon name="moon"></ion-icon>
+          Dark mode
+        </ion-button>
+      </div>
+    </div>
   </ion-content>
 </ion-menu>
 <div class="ion-page" id="main-content">

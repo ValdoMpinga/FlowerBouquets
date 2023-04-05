@@ -86,3 +86,46 @@ ion-icon {
   overflow-x: scroll !important;
   overflow-y: hidden;
 }
+.contai{
+  display: flex;
+  justify-content: space-between;
+}
+.avatar{
+  margin: 10px;
+  margin-right: 30px;
+  
+}
+
+.pontos{
+  margin: 10px;
+  margin-right: 50px;
+  color: #9BC995;
+}
+.poin{
+  font-size: 20px;
+  margin-top: none;
+}
+.dez{
+  font-size: 40px;
+}
+.nome{
+  margin: 10px;
+  color: #000000;
+}
+.email{
+  margin: 10px;
+}
+.cont{
+  margin-bottom: 15px;
+}
+.buton{
+  margin-top: 15px;
+  
+}
+ion-icon {
+  margin: 10px;
+  
+}
+ion-button{
+  color: #000000;
+}
