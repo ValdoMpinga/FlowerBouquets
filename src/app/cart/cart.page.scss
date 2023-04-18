@@ -3,7 +3,7 @@ ion-toolbar {
 }
 
 .items-container {
-  height: 50%;
+  height: 55%;
   // height: 420px;
   overflow: auto;
 }
@@ -31,6 +31,8 @@ ion-item {
   margin-top: 50px;
   display: flex;
   justify-content: center;
+    margin-bottom: 30px;
+
 }
 
 .pay-button {

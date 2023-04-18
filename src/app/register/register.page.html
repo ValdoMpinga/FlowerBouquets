@@ -41,7 +41,7 @@
       ></ion-input>
     </ion-item>
 
-    <ion-button class="register-button" fill="solid">Register</ion-button>
+    <ion-button class="register-button" fill="solid" [routerLink]="['/email-verification']">Register</ion-button>
 
     <p class="register-option">Or register with:</p>
 
@@ -58,9 +58,10 @@
     </ion-grid>
   </div>
 
-    <div class="sign-up">
+  <div class="sign-up">
     <p>
-      Already have an account?   <span><a href="">Sign un!</a> </span>
+      Already have an account?
+      <span><a [routerLink]="['/login']">Sign in!</a> </span>
     </p>
   </div>
 </ion-content>

@@ -55,7 +55,6 @@
     <ion-row scrollX="true" class="scroll-items">
       <ion-col *ngFor="let item of items">
         <app-flowers-card
-          [routerLink]="['/flower-screen']"
           [flowersImage]="item.image"
           [flowersName]="item.name"
           [flowersPrice]="item.price"
@@ -74,7 +73,6 @@
           size-lg="2"
         >
           <app-flowers-card
-            [routerLink]="['/flower-screen']"
             class="app-flowers-card"
             [flowersImage]="item.image"
             [flowersName]="item.name"

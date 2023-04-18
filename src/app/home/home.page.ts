@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
-import { MenuController } from '@ionic/angular';
-
+import { Component, OnInit } from '@angular/core';
+import { FlowersService, FlowersInterface } from '../services/flowers.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   items = [
     {
       name: 'Rose',
@@ -69,8 +68,22 @@ export class HomePage {
         'https://images.pexels.com/photos/1381679/pexels-photo-1381679.jpeg?auto=compress&cs=tinysrgb&w=800',
     },
   ];
+  todo: any;
+  flowers: FlowersInterface[] = [];
 
-  constructor(private menu: MenuController) {}
+  constructor(private flowersService: FlowersService) {}
 
+  ngOnInit() {
+    
+    // this.flowersService.getTodo().subscribe((data) => {
+      //   this.todo = data;
+      //   console.log(this.todo);
+      // });
+      this.flowersService.getFlowers();
 
+    this.flowersService.flowers().subscribe((data) => {
+      this.flowers = data;
+      console.log(this.flowers);
+    });
+  }
 }
