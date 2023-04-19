@@ -6,15 +6,18 @@ import { Router } from '@angular/router';
   templateUrl: './flowers-card.component.html',
   styleUrls: ['./flowers-card.component.scss'],
 })
+
 export class FlowersCardComponent implements OnInit {
+  @Input() id: number = 0;
   @Input() flowersImage: string = '';
   @Input() flowersName: string = '';
   @Input() flowersPrice: string = '';
 
   constructor(private router: Router) {}
 
-   goToFlowerDetails() {
+  goToFlowerDetails() {
     const data = {
+      id: this.id,
       flowersImage: this.flowersImage,
       flowersName: this.flowersName,
       flowersPrice: this.flowersPrice,

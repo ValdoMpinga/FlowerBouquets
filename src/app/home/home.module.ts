@@ -7,6 +7,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { FlowersCardComponent } from '../components/flowers-card/flowers-card.component';
 import { SideMenuModule } from '../components/side-menu/side-menu.module';
+import { CartBadgeModule } from '../components/cart-badge/cart-badge.module';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { SideMenuModule } from '../components/side-menu/side-menu.module';
     IonicModule,
     HomePageRoutingModule,
     SideMenuModule,
+    CartBadgeModule,
   ],
   declarations: [HomePage, FlowersCardComponent],
 })

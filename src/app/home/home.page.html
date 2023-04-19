@@ -15,7 +15,7 @@
           [routerLink]="['/cart']"
           name="cart"
         ></ion-icon>
-        <ion-badge color="danger">0</ion-badge>
+        <app-cart-badge />
       </ion-buttons>
 
       <ion-buttons slot="end">
@@ -46,7 +46,7 @@
     <ion-grid>
       <ion-row>
         <ion-col class="categories">Categories</ion-col>
-        <ion-col  class="ocassions">Ocassions</ion-col>
+        <ion-col class="ocassions">Ocassions</ion-col>
       </ion-row>
     </ion-grid>
 
@@ -55,6 +55,7 @@
     <ion-row scrollX="true" class="scroll-items">
       <ion-col *ngFor="let item of items">
         <app-flowers-card
+          [id]="item.id"
           [flowersImage]="item.image"
           [flowersName]="item.name"
           [flowersPrice]="item.price"
@@ -74,6 +75,7 @@
         >
           <app-flowers-card
             class="app-flowers-card"
+            [id]="item.id"
             [flowersImage]="item.image"
             [flowersName]="item.name"
             [flowersPrice]="item.price"

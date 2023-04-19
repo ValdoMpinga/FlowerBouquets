@@ -6,9 +6,7 @@
 
 export const environment = {
   production: false,
-  SUPABASE_URL: 'https://mkdhfteibbwgzfhqtwqa.supabase.co',
-  SUPABASE_KEY:
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1rZGhmdGVpYmJ3Z3pmaHF0d3FhIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODE2Njg3NjAsImV4cCI6MTk5NzI0NDc2MH0.W4nPXDr_Afg1YddZmyQRTwCi7Gq4-jsmcPr_YZqa5Cc',
+  FLOWERS_BOUQUETS_API_URL: 'https://flowers-bouquets-api.onrender.com/flowers',
 };
 
 /*
@@ -20,3 +18,5 @@ ch as `zone.run`, `zoneDelegate.invokeTask`.
  * on performance if an error is thrown.
  */
 // import 'zone.js/plugins/zone-error';  // Included with Angular CLI.
+
+
