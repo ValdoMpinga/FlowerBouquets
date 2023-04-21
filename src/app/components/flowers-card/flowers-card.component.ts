@@ -11,7 +11,7 @@ export class FlowersCardComponent implements OnInit {
   @Input() id: number = 0;
   @Input() flowersImage: string = '';
   @Input() flowersName: string = '';
-  @Input() flowersPrice: string = '';
+  @Input() flowersPrice: number = 0;
 
   constructor(private router: Router) {}
 

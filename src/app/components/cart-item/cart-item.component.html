@@ -11,7 +11,7 @@
         <ion-row class="flower-name">
           {{ flowersName }}
         </ion-row>
-        <ion-row class="flower-price"> {{ flowersPrice }}</ion-row>
+        <ion-row class="flower-price"> {{ flowersPrice }}€</ion-row>
         <ion-row>
           <ion-item class="quantity-select-container">
             <ion-select [(ngModel)]="flowersQuantity">
@@ -24,7 +24,7 @@
           </ion-item>
           <ion-row> </ion-row
           ><ion-row>
-            <ion-button>
+            <ion-button (click)="deleteCartItem()">
               <ion-icon class="trash-icon" name="trash-bin"></ion-icon>
             </ion-button>
           </ion-row>

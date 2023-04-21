@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
+import { BehaviorSubject } from 'rxjs';
 
 export interface CartItem {
   id: number;
@@ -14,6 +15,7 @@ const STORAGE_KEY = 'cart';
 export class CartService {
   private cart: CartItem[] = [];
   private isInitialized = false;
+  private cartSubject = new BehaviorSubject<number>(0);
 
   constructor(private storage: Storage) {
     this.init();
@@ -25,6 +27,7 @@ export class CartService {
       const savedCart = await this.storage.get(STORAGE_KEY);
       if (savedCart) {
         this.cart = savedCart;
+        this.updateCartSubject();
       }
       this.isInitialized = true;
     } catch (error) {
@@ -49,6 +52,7 @@ export class CartService {
       }
       await this.storage.set(STORAGE_KEY, this.cart);
       console.log(`Item with ID ${item.id} added to cart successfully.`);
+      this.updateCartSubject();
     } catch (error) {
       console.error(`Error adding item with ID ${item.id} to cart: ${error}`);
       throw error;
@@ -62,6 +66,7 @@ export class CartService {
         this.cart.splice(index, 1);
         await this.storage.set(STORAGE_KEY, this.cart);
         console.log('Item removed from cart:', item);
+        this.updateCartSubject();
       }
     } catch (error) {
       console.error('Error removing item from cart', error);
@@ -73,21 +78,28 @@ export class CartService {
       this.cart = [];
       await this.storage.remove(STORAGE_KEY);
       console.log('Cart cleared');
+      this.updateCartSubject();
     } catch (error) {
       console.error('Error clearing cart', error);
     }
   }
 
   async getTotalItemsInCart(): Promise<number> {
-    let total = 0;
     const cart = await this.getCart();
-    // console.log(cart);
-
+    let total = 0;
     for (const item of cart) {
       total += item.quantity;
     }
-    // console.log(total);
-
     return total;
+  }
+
+  getCartSubject() {
+    return this.cartSubject.asObservable();
+  }
+
+  private updateCartSubject() {
+    this.cartSubject.next(
+      this.cart.reduce((total, item) => total + item.quantity, 0)
+    );
   }
 }

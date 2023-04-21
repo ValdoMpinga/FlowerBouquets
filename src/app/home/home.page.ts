@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FlowersService, Flower } from '../services/flowers.service';
+import { CartItem, CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-home',
@@ -8,18 +9,30 @@ import { FlowersService, Flower } from '../services/flowers.service';
 })
 export class HomePage implements OnInit {
   cartQuantity: number = 0;
-
-  items:Flower[]=[]
-  todo: any;
+  isDataReady: boolean = false;
+  cart: CartItem[] = [];
   flowers: Flower[] = [];
-  a: any[] = [];
 
-  constructor(private flowersService: FlowersService) {}
+  constructor(
+    private flowersService: FlowersService,
+    private cartService: CartService
+  ) {
+    this.cartService.getCart().then((cart) => {
+      this.cart = cart;
+    });
+  }
 
   ngOnInit() {
     this.flowersService.getFlowers().subscribe((data) => {
-      console.log(data);
-      this.items = data;
+      this.flowers = data;
+      this.isDataReady = true;
     });
+
+    this.cartService.getCart().then((cart) => {
+      this.cart = cart;
+    });
+
+    console.log(this.flowers);
+    
   }
 }

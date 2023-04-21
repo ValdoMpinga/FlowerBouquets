@@ -1,93 +1,118 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { CartItem } from '../services/cart.service';
+import { Flower, FlowersService } from '../services/flowers.service';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
+export interface CartItemType {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  quantity: number;
+}
+
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.page.html',
   styleUrls: ['./cart.page.scss'],
 })
 export class CartPage implements OnInit {
-  items = [
-    {
-      id: 1,
-      name: 'Rose',
-      price: '10€',
-      image:
-        'https://images.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    },
-    {
-      id: 2,
-      name: 'Tulip',
-      price: '7€',
-      image:
-        'https://images.pexels.com/photos/1883385/pexels-photo-1883385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    },
-    {
-      id: 3,
-      name: 'Lily',
-      price: '12€',
-      image:
-        'https://images.pexels.com/photos/132466/pexels-photo-132466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    },
-    {
-      id: 4,
-      name: 'Daisy',
-      price: '5€',
-      image:
-        'https://images.pexels.com/photos/67857/daisy-flower-spring-marguerite-67857.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 5,
-      name: 'Orchid',
-      price: '15€',
-      image:
-        'https://images.pexels.com/photos/40744/orchid-flower-plant-exotic-40744.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 6,
-      name: 'Carnation',
-      price: '4€',
-      image:
-        'https://images.pexels.com/photos/894751/pexels-photo-894751.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 7,
-      name: 'Sunflower',
-      price: '8€',
-      image:
-        'https://images.pexels.com/photos/33044/sunflower-sun-summer-yellow.jpg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 8,
-      name: 'Hydrangea',
-      price: '11€',
-      image:
-        'https://images.pexels.com/photos/414510/pexels-photo-414510.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 9,
-      name: 'Peony',
-      price: '14€',
-      image:
-        'https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      id: 10,
-      name: 'Lilac',
-      price: '6€',
-      image:
-        'https://images.pexels.com/photos/1381679/pexels-photo-1381679.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-  ];
+  flowers: Flower[] = [];
+  isDataReady: boolean = false;
+  filteredCartItems: CartItemType[] = [];
+  filteredCartItem: CartItemType = {
+    id: 0,
+    image: '',
+    name: '',
+    price: 0,
+    quantity: 0,
+  };
+  totalCartItems: number = 0;
+  totalAmountToPay: number = 0;
 
-  cartItems: CartItem[]=[];
+  cartItems: CartItem[] = [];
+  displayCartItems: CartItem[] = [];
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private flowersService: FlowersService,
+    private alertController: AlertController,
+    private router: Router
+  ) {}
+
+  async clearCartItems() {
+    const alert = await this.alertController.create({
+      header: 'Clear cart items!',
+      message: 'Do you want to clean the cart?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Cart clear aborted');
+          },
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.cartService.clearCart();
+            this.router.navigate(['/home']);
+            console.log('Cart cleared successfully');
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
+  async pay() {
+    const alert = await this.alertController.create({
+      header: 'Payment Successful',
+      message: 'Your payment was successful, and you won 10 points!',
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            this.cartService.clearCart();
+            this.router.navigate(['/home']);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
 
   ngOnInit() {
-   this.cartService.getCart().then((items) => {
-     this.cartItems = items;
-     console.log('Cart Items:', items);
-   });
+    this.cartService.getCart().then((items) => {
+      this.cartItems = items;      
+    });
+
+    
+    this.flowersService.getFlowers().subscribe((data) => {
+      this.flowers = data;
+      this.isDataReady = true;
+      this.cartItems.forEach((item) => {
+        this.filteredCartItems.push(
+          this.flowers
+            .filter((flower) => flower.id === item.id)
+            .map(
+              (flower): CartItemType => ({ quantity: item.quantity, ...flower })
+            )[0]
+        );
+      });
+
+      this.cartService
+        .getTotalItemsInCart()
+        .then((items) => (this.totalCartItems = items));
+
+      this.filteredCartItems.forEach(
+        (item) => (this.totalAmountToPay += item.price * item.quantity)
+      );
+    });
   }
 }
