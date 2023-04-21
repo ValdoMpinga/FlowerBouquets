@@ -27,12 +27,5 @@ export class HomePage implements OnInit {
       this.flowers = data;
       this.isDataReady = true;
     });
-
-    this.cartService.getCart().then((cart) => {
-      this.cart = cart;
-    });
-
-    console.log(this.flowers);
-    
   }
 }

@@ -88,39 +88,37 @@ export class CartPage implements OnInit {
   }
 
   ngOnInit() {
-    this.cartService
-      .getTotalItemsInCart()
-      .then((items) => (this.totalCartItems = items))
-      .then(() => {
-        if (this.totalCartItems > 0) {
-          this.cartService.getCart().then((items) => {
-            this.cartItems = items;
-          });
-          console.log(this.totalCartItems);
+    this.cartService.getCartSubject().subscribe((total) => {
+      this.totalCartItems = total;
+    });
 
-          this.flowersService.getFlowers().subscribe((data) => {
-            this.flowers = data;
-            this.isDataReady = true;
-            this.cartItems.forEach((item) => {
-              this.filteredCartItems.push(
-                this.flowers
-                  .filter((flower) => flower.id === item.id)
-                  .map(
-                    (flower): CartItemType => ({
-                      quantity: item.quantity,
-                      ...flower,
-                    })
-                  )[0]
-              );
-            });
-
-            this.filteredCartItems.forEach(
-              (item) => (this.totalAmountToPay += item.price * item.quantity)
-            );
-
-            console.log(this.filteredCartItems);
-          });
-        }
+    if (this.totalCartItems > 0) {
+      this.cartService.getCart().then((items) => {
+        this.cartItems = items;
       });
+
+      this.flowersService.getFlowers().subscribe((data) => {
+        this.flowers = data;
+        this.isDataReady = true;
+        this.cartItems.forEach((item) => {
+          this.filteredCartItems.push(
+            this.flowers
+              .filter((flower) => flower.id === item.id)
+              .map(
+                (flower): CartItemType => ({
+                  quantity: item.quantity,
+                  ...flower,
+                })
+              )[0]
+          );
+        });
+
+        this.filteredCartItems.forEach(
+          (item) => (this.totalAmountToPay += item.price * item.quantity)
+        );
+
+        console.log(this.filteredCartItems);
+      });
+    }
   }
 }

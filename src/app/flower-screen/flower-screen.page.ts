@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
-import { CartService } from '../services/cart.service';
-import { CartItem } from '../services/cart.service';
-
+import { CartService, CartItem } from '../services/cart.service';
+  
 @Component({
   selector: 'app-flower-screen',
   templateUrl: './flower-screen.page.html',
@@ -34,7 +32,6 @@ export class FlowerScreenPage implements OnInit {
 
   async addFlowersToCart()
   {
-    
       this.cartService.addItemToCart({
         id: this.data.id,
         quantity: this.quantity,
