@@ -5,6 +5,7 @@ import { Flower, FlowersService } from '../services/flowers.service';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { PointsService } from '../services/points.service';
+import confetti from 'canvas-confetti';
 
 export interface CartItemType {
   id: number;
@@ -37,7 +38,7 @@ export class CartPage implements OnInit {
   displayCartItems: CartItem[] = [];
 
   didUserWon: boolean = false;
-  
+
   constructor(
     private cartService: CartService,
     private flowersService: FlowersService,
@@ -46,7 +47,6 @@ export class CartPage implements OnInit {
     private router: Router
   ) {}
 
-  
   async clearCartItems() {
     const alert = await this.alertController.create({
       header: 'Clear cart items!',
@@ -83,14 +83,26 @@ export class CartPage implements OnInit {
           text: 'OK',
           handler: () => {
             this.cartService.clearCart();
-            this.didUserWon = this.pointsService.pay(this.totalAmountToPay)
+            this.didUserWon = this.pointsService.pay(this.totalAmountToPay);
 
-            if (this.didUserWon)
-            {
+            if (this.didUserWon) {
               console.log('user won');
-              
+              setTimeout(() => {
+                confetti({
+                  particleCount: 100,
+                  spread: 70,
+                  origin: { y: 0.6 },
+                });
+                this.alertController
+                  .create({
+                    header: 'Congratulations!',
+                    message: 'You have won 10 points! You can check them on the side menu!',
+                    buttons: ['OK'],
+                  })
+                  .then((alert) => alert.present());
+              });
             }
-              
+
             this.router.navigate(['/home']);
           },
         },
@@ -106,9 +118,8 @@ export class CartPage implements OnInit {
     });
   }
 
-  cartItemsSetup()
-  {
-       this.flowersService.getFlowers().subscribe((data) => {
+  cartItemsSetup() {
+    this.flowersService.getFlowers().subscribe((data) => {
       this.flowers = data;
       this.isDataReady = true;
       this.cartItems.forEach((item) => {
@@ -133,12 +144,11 @@ export class CartPage implements OnInit {
   ngOnInit() {
     this.cartService.getCartSubject().subscribe((total) => {
       this.totalCartItems = total;
-      this.cartItemsSetup()
+      this.cartItemsSetup();
     });
 
     if (this.totalCartItems > 0) {
       this.getCartItems();
     }
   }
-
 }
