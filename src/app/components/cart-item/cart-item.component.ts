@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { AlertController } from '@ionic/angular';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-cart-item',
@@ -10,6 +11,7 @@ import { AlertController } from '@ionic/angular';
 export class CartItemComponent implements OnInit {
   quantity: number = 0;
   quantityValues: number[] = [];
+  private cartSubject = new BehaviorSubject<number>(0);
 
   @Input() flowersId: number = 0;
   @Input() flowersImage: string = '';
@@ -19,13 +21,17 @@ export class CartItemComponent implements OnInit {
 
   constructor(
     private cartService: CartService,
-    private alertController: AlertController,
+    private alertController: AlertController
   ) {
     for (let i = 1; i <= 100; i++) {
       this.quantityValues.push(i);
     }
   }
 
+  onSelectChange()
+  {
+    console.log('here');    
+  }
   async deleteCartItem() {
     const alert = await this.alertController.create({
       header: 'Remove flowers',
@@ -54,5 +60,7 @@ export class CartItemComponent implements OnInit {
 
     await alert.present();
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.cartService.getCartSubject().subscribe(() => {});
+  }
 }

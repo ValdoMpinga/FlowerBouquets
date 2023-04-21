@@ -4,6 +4,7 @@ import { CartItem } from '../services/cart.service';
 import { Flower, FlowersService } from '../services/flowers.service';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { PointsService } from '../services/points.service';
 
 export interface CartItemType {
   id: number;
@@ -35,13 +36,17 @@ export class CartPage implements OnInit {
   cartItems: CartItem[] = [];
   displayCartItems: CartItem[] = [];
 
+  didUserWon: boolean = false;
+  
   constructor(
     private cartService: CartService,
     private flowersService: FlowersService,
+    private pointsService: PointsService,
     private alertController: AlertController,
     private router: Router
   ) {}
 
+  
   async clearCartItems() {
     const alert = await this.alertController.create({
       header: 'Clear cart items!',
@@ -72,12 +77,20 @@ export class CartPage implements OnInit {
   async pay() {
     const alert = await this.alertController.create({
       header: 'Payment Successful',
-      message: 'Your payment was successful, and you won 10 points!',
+      message: 'Your payment was successful',
       buttons: [
         {
           text: 'OK',
           handler: () => {
             this.cartService.clearCart();
+            this.didUserWon = this.pointsService.pay(this.totalAmountToPay)
+
+            if (this.didUserWon)
+            {
+              console.log('user won');
+              
+            }
+              
             this.router.navigate(['/home']);
           },
         },
@@ -87,38 +100,45 @@ export class CartPage implements OnInit {
     await alert.present();
   }
 
+  getCartItems() {
+    this.cartService.getCart().then((items) => {
+      this.cartItems = items;
+    });
+  }
+
+  cartItemsSetup()
+  {
+       this.flowersService.getFlowers().subscribe((data) => {
+      this.flowers = data;
+      this.isDataReady = true;
+      this.cartItems.forEach((item) => {
+        this.filteredCartItems.push(
+          this.flowers
+            .filter((flower) => flower.id === item.id)
+            .map(
+              (flower): CartItemType => ({
+                quantity: item.quantity,
+                ...flower,
+              })
+            )[0]
+        );
+      });
+
+      this.filteredCartItems.forEach(
+        (item) => (this.totalAmountToPay += item.price * item.quantity)
+      );
+    });
+  }
+
   ngOnInit() {
     this.cartService.getCartSubject().subscribe((total) => {
       this.totalCartItems = total;
+      this.cartItemsSetup()
     });
 
     if (this.totalCartItems > 0) {
-      this.cartService.getCart().then((items) => {
-        this.cartItems = items;
-      });
-
-      this.flowersService.getFlowers().subscribe((data) => {
-        this.flowers = data;
-        this.isDataReady = true;
-        this.cartItems.forEach((item) => {
-          this.filteredCartItems.push(
-            this.flowers
-              .filter((flower) => flower.id === item.id)
-              .map(
-                (flower): CartItemType => ({
-                  quantity: item.quantity,
-                  ...flower,
-                })
-              )[0]
-          );
-        });
-
-        this.filteredCartItems.forEach(
-          (item) => (this.totalAmountToPay += item.price * item.quantity)
-        );
-
-        console.log(this.filteredCartItems);
-      });
+      this.getCartItems();
     }
   }
+
 }

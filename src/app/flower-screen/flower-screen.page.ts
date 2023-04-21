@@ -46,11 +46,6 @@ export class FlowerScreenPage implements OnInit {
           handler: () => {
             console.log('OK clicked');
             this.router.navigate(['/home']);
-
-            console.log(this.data);
-            console.log(this.quantity);
-
-
           },
         },
       ],
@@ -64,7 +59,7 @@ export class FlowerScreenPage implements OnInit {
   }
 
   decrement() {
-    if (this.quantity > 0) {
+    if (this.quantity > 1) {
       this.quantity--;
     }
   }

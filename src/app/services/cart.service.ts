@@ -15,7 +15,7 @@ const STORAGE_KEY = 'cart';
 export class CartService {
   private cart: CartItem[] = [];
   private isInitialized = false;
-  private cartSubject = new BehaviorSubject<number>(0);
+   cartSubject = new BehaviorSubject<number>(0);
 
   constructor(private storage: Storage) {
     this.init();
