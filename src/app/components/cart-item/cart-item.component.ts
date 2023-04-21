@@ -12,11 +12,10 @@ export class CartItemComponent implements OnInit {
   quantityValues: number[] = [];
 
   @Input() flowersId: number = 0;
-  @Input() flowersImage: string =
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.VJOEUC4vt5cxi8uJEbJkhwHaEo%26pid%3DApi&f=1&ipt=edcf40b8c87a9eab78af853721e55ea02968e2c22f13dc38179cdb198a850eaa&ipo=images';
-  @Input() flowersName: string = 'Tulipas';
-  @Input() flowersPrice: number = 19;
-  @Input() flowersQuantity: number = 3;
+  @Input() flowersImage: string = '';
+  @Input() flowersName: string = '';
+  @Input() flowersPrice: number = 0;
+  @Input() flowersQuantity: number = 0;
 
   constructor(
     private cartService: CartService,

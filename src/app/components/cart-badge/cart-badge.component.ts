@@ -14,7 +14,6 @@ export class CartBadgeComponent implements OnInit {
   async ngOnInit() {
     await this.cartService.getCart();
     const quantity = await this.cartService.getTotalItemsInCart();
-    // console.log(quantity);
     this.cartQuantity = quantity;
   }
 }

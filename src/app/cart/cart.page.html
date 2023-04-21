@@ -16,11 +16,22 @@
   </ion-header>
 
   <ion-content [fullscreen]="true">
-    <div class="loading-spinner" *ngIf="!isDataReady">
+    <!-- <div class="loading-spinner" *ngIf="!isDataReady">
       <ion-spinner />
+    </div> -->
+    <div class="empty-cart" *ngIf="totalCartItems == 0">
+      <ion-icon name="cart-outline"></ion-icon>
+      <p class="message">
+        No flowers in your cart yet? Browse our collection to find the perfect
+        blooms for you.
+      </p>
+
+      <ion-button class="shop-flowers-button" [routerLink]="['/home']">
+        Shop flowers
+      </ion-button>
     </div>
 
-    <div *ngIf="isDataReady">
+    <div *ngIf="totalCartItems>0">
       <ion-header collapse="condense">
         <ion-buttons slot="start">
           <ion-back-button default-href="/home"></ion-back-button>
@@ -56,7 +67,9 @@
           <ion-select-option value="store">At the store</ion-select-option>
         </ion-select>
 
-        <ion-button class="clear-cart" (click)="clearCartItems()"> Clear cart </ion-button>
+        <ion-button class="clear-cart" (click)="clearCartItems()">
+          Clear cart
+        </ion-button>
       </div>
 
       <p>Total: {{totalAmountToPay}}€</p>
