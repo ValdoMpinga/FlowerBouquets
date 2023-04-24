@@ -89,20 +89,25 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-
-      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button class="alarm-icon" color="flower-bouquets-yellow">
-          <ion-icon name="alarm-outline"></ion-icon>
-        </ion-fab-button>
-        <ion-fab-list side="start">
-          <ion-fab-button class="aux-fab" [routerLink]="['/reminder-form']">
-            <ion-icon name="add-outline"></ion-icon>
-          </ion-fab-button>
-          <ion-fab-button class="aux-fab" [routerLink]="['/reminders-list']">
-            <ion-icon name="list-outline"></ion-icon>
-          </ion-fab-button>
-        </ion-fab-list>
-      </ion-fab>
     </div>
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+      <ion-fab-button class="alarm-icon" color="flower-bouquets-yellow">
+        <ion-icon name="alarm-outline"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-list side="start">
+        <ion-fab-button
+          class="aux-fab add-fab"
+          [routerLink]="['/reminder-form']"
+        >
+          <ion-icon name="add-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button
+          class="aux-fab list-fab"
+          [routerLink]="['/reminders-list']"
+        >
+          <ion-icon name="list-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab-list>
+    </ion-fab>
   </ion-content>
 </div>

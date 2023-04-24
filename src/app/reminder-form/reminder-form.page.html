@@ -1,81 +1,117 @@
 <app-side-menu />
 <div class="ion-page" id="main-content">
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button default-href="/home"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Create reminder</ion-title>
-
-    <ion-buttons slot="end">
-      <ion-menu-button auto-hide="false"></ion-menu-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header [translucent]="true">
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-back-button default-href="/login"></ion-back-button>
+        <ion-back-button default-href="/home"></ion-back-button>
       </ion-buttons>
       <ion-title>Create reminder</ion-title>
 
       <ion-buttons slot="end">
-        <ion-menu-button size="large" auto-hide="false"></ion-menu-button>
+        <ion-menu-button auto-hide="false"></ion-menu-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
-  <div class="register-input-container">
-    <ion-item fill="solid">
-      <ion-label position="floating">Title</ion-label>
-      <ion-input type="name" placeholder="Enter full name"></ion-input>
-    </ion-item>
+  <ion-content [fullscreen]="true">
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button default-href="/login"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Create reminder</ion-title>
 
-    <ion-item fill="solid">
-      <ion-label position="floating">Date and time</ion-label>
-      <ion-input
-        type="datetime-local"
-        placeholder="Enter email"
-      ></ion-input>
-    </ion-item>
+        <ion-buttons slot="end">
+          <ion-menu-button size="large" auto-hide="false"></ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
 
-    <ion-item fill="solid">
-      <ion-label position="floating">Description</ion-label>
-      <ion-input type="password" placeholder="Enter password"></ion-input>
-    </ion-item>
+    <div class="register-input-container">
+      <ion-item fill="solid">
+        <ion-label position="floating">Title</ion-label>
+        <ion-input
+          type="name"
+          placeholder="Enter full name"
+          [(ngModel)]="title"
+        />
+      </ion-item>
 
-    <ion-item fill="solid">
-      <ion-select placeholder="Select occasion">
-        <ion-select-option value="apples">Birthday</ion-select-option>
-        <ion-select-option value="oranges"
-          >Wedding aniversary</ion-select-option
+      <ion-item fill="solid">
+        <ion-label position="floating">Date and time</ion-label>
+        <ion-input
+          type="datetime-local"
+          placeholder="Enter email"
+          [(ngModel)]="dateTime"
+        />
+      </ion-item>
+
+      <ion-item fill="solid">
+        <ion-label position="floating">Description</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Enter password"
+          [(ngModel)]="description"
+        />
+      </ion-item>
+
+      <ion-item fill="solid">
+        <ion-select
+          placeholder="Select reminder frequency"
+          [(ngModel)]="frequency"
         >
-        <ion-select-option value="bananas">Just love</ion-select-option>
-      </ion-select>
-    </ion-item>
+          <ion-select-option value="once">Just this time</ion-select-option>
+          <ion-select-option value="every-day">Every day</ion-select-option>
+          <ion-select-option value="every-week">Every Week</ion-select-option>
+          <ion-select-option value="every-month">Every month</ion-select-option>
+          <ion-select-option value="every-year">Every year</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-    <ion-item fill="solid">
-      <ion-select placeholder="Select reminder frequency">
-        <ion-select-option value="once">Just this time</ion-select-option>
-        <ion-select-option value="every-week">Every Week</ion-select-option>
-        <ion-select-option value="every-month">Every month</ion-select-option>
-        <ion-select-option value="every-year">Every year</ion-select-option>
-      </ion-select>
-    </ion-item>
+      <ion-item fill="solid">
+        <ion-select placeholder="Select occasion" [(ngModel)]="occasion">
+          <ion-select-option value="birthday">Birthday</ion-select-option>
+          <ion-select-option value="wedding-anniversary"
+            >Wedding Anniversary</ion-select-option
+          >
+          <ion-select-option value="valentines-day"
+            >Valentine's Day</ion-select-option
+          >
+          <ion-select-option value="mothers-day"
+            >Mother's Day</ion-select-option
+          >
+          <ion-select-option value="graduation">Graduation</ion-select-option>
+          <ion-select-option value="get-well-soon"
+            >Get Well Soon</ion-select-option
+          >
+          <ion-select-option value="sympathy">Sympathy</ion-select-option>
+          <ion-select-option value="just-because"
+            >Just Because</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
 
-    <ion-item fill="solid">
-      <ion-select placeholder="Select the reminder action">
-        <ion-select-option value="apples">Birthday</ion-select-option>
-        <ion-select-option value="oranges"
-          >Wedding aniversary</ion-select-option
+      <ion-item fill="solid">
+        <ion-select
+          placeholder="Select the reminder action"
+          [(ngModel)]="action"
         >
-        <ion-select-option value="bananas">Just love</ion-select-option>
-      </ion-select>
-    </ion-item>
+          <ion-select-option value="buy-flowers">Buy Flowers</ion-select-option>
+          <ion-select-option value="send-flowers"
+            >Send Flowers</ion-select-option
+          >
+          <ion-select-option value="call">Call</ion-select-option>
+          <ion-select-option value="visit">Visit</ion-select-option>
+          <ion-select-option value="order-cake">Order Cake</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-    <ion-button class="register-button" fill="solid">Create</ion-button>
-  </div>
-</ion-content>
+      <ion-button
+        class="register-button"
+        fill="solid"
+        (click)="scheduleNotification()"
+        >Create</ion-button
+      >
+    </div>
+  </ion-content>
 </div>
