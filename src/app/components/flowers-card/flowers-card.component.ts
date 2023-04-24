@@ -1,17 +1,32 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-flowers-card',
   templateUrl: './flowers-card.component.html',
   styleUrls: ['./flowers-card.component.scss'],
 })
-export class FlowersCardComponent implements OnInit {
-  @Input() flowersImage: string =
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.VJOEUC4vt5cxi8uJEbJkhwHaEo%26pid%3DApi&f=1&ipt=edcf40b8c87a9eab78af853721e55ea02968e2c22f13dc38179cdb198a850eaa&ipo=images';
-  @Input() flowersName: string = 'Tulipas';
-  @Input() flowersPrice: string = '10.99€';
 
-  constructor() {}
+export class FlowersCardComponent implements OnInit {
+  @Input() id: number = 0;
+  @Input() flowersImage: string = '';
+  @Input() flowersName: string = '';
+  @Input() flowersPrice: number = 0;
+
+  constructor(private router: Router) {}
+
+  goToFlowerDetails() {
+    const data = {
+      id: this.id,
+      flowersImage: this.flowersImage,
+      flowersName: this.flowersName,
+      flowersPrice: this.flowersPrice,
+    };
+
+    this.router.navigate(['/flower-screen'], {
+      queryParams: { data: JSON.stringify(data) },
+    });
+  }
 
   ngOnInit() {}
 }

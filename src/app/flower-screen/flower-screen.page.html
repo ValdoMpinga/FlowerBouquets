@@ -2,8 +2,8 @@
 <div class="ion-page" id="main-content">
   <ion-header [translucent]="true">
     <ion-toolbar>
-      <ion-buttons  slot="start">
-        <ion-button  [routerLink]="['/home']">
+      <ion-buttons slot="start">
+        <ion-button [routerLink]="['/home']">
           <ion-icon name="arrow-back" />
         </ion-button>
       </ion-buttons>
@@ -14,9 +14,8 @@
           [routerLink]="['/cart']"
           name="cart"
         ></ion-icon>
-        <ion-badge color="danger">0</ion-badge>
+        <app-cart-badge />
       </ion-buttons>
-
 
       <ion-buttons slot="end">
         <ion-menu-button auto-hide="false">
@@ -57,24 +56,24 @@
     </ion-header>
 
     <div class="selected-img-container">
-      <img class="selected-img" src="{{items[0].image}}" alt="" />
-      <p class="item-name">{{items[0].name}} - Medium size</p>
-      <p class="item-price">{{items[0].price}}</p>
+      <img class="selected-img" src="{{data.flowersImage}}" alt="" />
+      <p class="item-name">{{data.flowersName}} - Medium size</p>
+      <p class="item-price">{{data.flowersPrice}}€</p>
     </div>
 
     <ion-grid>
       <ion-row>
         <ion-col size="auto">
           <p>Small</p>
-          <img class="size-image" src="{{items[0].image}}" alt="" />
+          <img class="size-image" src="{{data.flowersImage}}" alt="" />
         </ion-col>
         <ion-col size="auto">
           <p class="selected-flower">Medium</p>
-          <img class="size-image" src="{{items[0].image}}" alt="" />
+          <img class="size-image" src="{{data.flowersImage}}" alt="" />
         </ion-col>
         <ion-col size="auto">
           <p>Large</p>
-          <img class="size-image" src="{{items[0].image}}" alt="" />
+          <img class="size-image" src="{{data.flowersImage}}" alt="" />
         </ion-col>
 
         <ion-col>
@@ -97,7 +96,7 @@
     </div>
 
     <div class="add-to-cart-button-container">
-      <ion-button  [routerLink]="['/home']"class="add-to-cart-button"> Add to cart </ion-button>
+      <ion-button class="add-to-cart-button" (click)="addFlowersToCart()"> Add to cart </ion-button>
     </div>
   </ion-content>
 </div>

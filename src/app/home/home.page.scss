@@ -2,6 +2,29 @@ ion-toolbar {
   --background: var(--ion-color-flower-bouquets-purple);
 }
 
+h2 {
+  color: var(--ion-color-flower-bouquets-yellow);
+
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.loading-spinner ion-spinner {
+  margin-top: 10px;
+  height: 5rem;
+  width: 5rem;
+}
+
 .app-icon {
   width: 50px;
   height: 50px;

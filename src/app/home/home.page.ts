@@ -1,76 +1,31 @@
-import { Component } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
+import { FlowersService, Flower } from '../services/flowers.service';
+import { CartItem, CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
-  items = [
-    {
-      name: 'Rose',
-      price: '10€',
-      image:
-        'https://images.pexels.com/photos/56866/garden-rose-red-pink-56866.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    },
-    {
-      name: 'Tulip',
-      price: '7€',
-      image:
-        'https://images.pexels.com/photos/1883385/pexels-photo-1883385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    },
-    {
-      name: 'Lily',
-      price: '12€',
-      image:
-        'https://images.pexels.com/photos/132466/pexels-photo-132466.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-    },
-    {
-      name: 'Daisy',
-      price: '5€',
-      image:
-        'https://images.pexels.com/photos/67857/daisy-flower-spring-marguerite-67857.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      name: 'Orchid',
-      price: '15€',
-      image:
-        'https://images.pexels.com/photos/40744/orchid-flower-plant-exotic-40744.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      name: 'Carnation',
-      price: '4€',
-      image:
-        'https://images.pexels.com/photos/894751/pexels-photo-894751.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      name: 'Sunflower',
-      price: '8€',
-      image:
-        'https://images.pexels.com/photos/33044/sunflower-sun-summer-yellow.jpg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      name: 'Hydrangea',
-      price: '11€',
-      image:
-        'https://images.pexels.com/photos/414510/pexels-photo-414510.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      name: 'Peony',
-      price: '14€',
-      image:
-        'https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-    {
-      name: 'Lilac',
-      price: '6€',
-      image:
-        'https://images.pexels.com/photos/1381679/pexels-photo-1381679.jpeg?auto=compress&cs=tinysrgb&w=800',
-    },
-  ];
+export class HomePage implements OnInit {
+  cartQuantity: number = 0;
+  isDataReady: boolean = false;
+  cart: CartItem[] = [];
+  flowers: Flower[] = [];
 
-  constructor(private menu: MenuController) {}
+  constructor(
+    private flowersService: FlowersService,
+    private cartService: CartService
+  ) {
+    this.cartService.getCart().then((cart) => {
+      this.cart = cart;
+    });
+  }
 
-
+  ngOnInit() {
+    this.flowersService.getFlowers().subscribe((data) => {
+      this.flowers = data;
+      this.isDataReady = true;
+    });
+  }
 }

@@ -15,7 +15,7 @@
           [routerLink]="['/cart']"
           name="cart"
         ></ion-icon>
-        <ion-badge color="danger">0</ion-badge>
+        <app-cart-badge />
       </ion-buttons>
 
       <ion-buttons slot="end">
@@ -27,72 +27,84 @@
   </ion-header>
 
   <ion-content [fullscreen]="true">
-    <ion-header collapse="condense">
-      <ion-buttons slot="end">
-        <ion-menu-button auto-hide="false"></ion-menu-button>
-      </ion-buttons>
-    </ion-header>
-
-    <div class="search-bar-container">
-      <ion-searchbar
-        class="searchbar"
-        animated="true"
-        show-clear-button="focus"
-        clear-icon="trash-bin"
-        placeholder="Search"
-      ></ion-searchbar>
+    <div class="loading-spinner" *ngIf="!isDataReady">
+      <h2>Cultivando as flores...</h2>
+      <ion-spinner />
     </div>
 
-    <ion-grid>
-      <ion-row>
-        <ion-col class="categories">Categories</ion-col>
-        <ion-col  class="ocassions">Ocassions</ion-col>
-      </ion-row>
-    </ion-grid>
+    <div *ngIf="isDataReady">
+      <ion-header collapse="condense">
+        <ion-buttons slot="end">
+          <ion-menu-button auto-hide="false"></ion-menu-button>
+        </ion-buttons>
+      </ion-header>
 
-    <h1>Trending🔥</h1>
+      <div class="search-bar-container">
+        <ion-searchbar
+          class="searchbar"
+          animated="true"
+          show-clear-button="focus"
+          clear-icon="trash-bin"
+          placeholder="Search"
+        ></ion-searchbar>
+      </div>
 
-    <ion-row scrollX="true" class="scroll-items">
-      <ion-col *ngFor="let item of items">
-        <app-flowers-card
-          [routerLink]="['/flower-screen']"
-          [flowersImage]="item.image"
-          [flowersName]="item.name"
-          [flowersPrice]="item.price"
-        ></app-flowers-card>
-      </ion-col>
-    </ion-row>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="categories">Categories</ion-col>
+          <ion-col class="ocassions">Ocassions</ion-col>
+        </ion-row>
+      </ion-grid>
 
-    <h1>Flowers for you 🌸</h1>
+      <h1>Trending🔥</h1>
 
-    <ion-grid>
-      <ion-row class="ion-justify-content-center ion-align-items-center">
-        <ion-col
-          *ngFor="let item of items.reverse()"
-          size="6"
-          size-md="4"
-          size-lg="2"
-        >
+      <ion-row scrollX="true" class="scroll-items">
+        <ion-col *ngFor="let flower of flowers">
           <app-flowers-card
-            [routerLink]="['/flower-screen']"
-            class="app-flowers-card"
-            [flowersImage]="item.image"
-            [flowersName]="item.name"
-            [flowersPrice]="item.price"
+            [id]="flower.id"
+            [flowersImage]="flower.image"
+            [flowersName]="flower.name"
+            [flowersPrice]="flower.price"
           ></app-flowers-card>
         </ion-col>
       </ion-row>
-    </ion-grid>
 
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <h1>Flowers for you 🌸</h1>
+
+      <ion-grid>
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col
+            *ngFor="let flower of flowers.reverse()"
+            size="6"
+            size-md="4"
+            size-lg="2"
+          >
+            <app-flowers-card
+              class="app-flowers-card"
+              [id]="flower.id"
+              [flowersImage]="flower.image"
+              [flowersName]="flower.name"
+              [flowersPrice]="flower.price"
+            ></app-flowers-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <ion-fab slot="fixed" vertical="bottom" horizontal="end">
       <ion-fab-button class="alarm-icon" color="flower-bouquets-yellow">
         <ion-icon name="alarm-outline"></ion-icon>
       </ion-fab-button>
       <ion-fab-list side="start">
-        <ion-fab-button class="aux-fab" [routerLink]="['/reminder-form']">
+        <ion-fab-button
+          class="aux-fab add-fab"
+          [routerLink]="['/reminder-form']"
+        >
           <ion-icon name="add-outline"></ion-icon>
         </ion-fab-button>
-        <ion-fab-button class="aux-fab" [routerLink]="['/reminders-list']">
+        <ion-fab-button
+          class="aux-fab list-fab"
+          [routerLink]="['/reminders-list']"
+        >
           <ion-icon name="list-outline"></ion-icon>
         </ion-fab-button>
       </ion-fab-list>

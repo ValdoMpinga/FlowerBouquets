@@ -39,7 +39,9 @@
       <ion-note class="danger" slot="error">Invalid password</ion-note>
     </ion-item>
 
-    <ion-button class="login-button" fill="solid">Login</ion-button>
+    <ion-button class="login-button" fill="solid" [routerLink]="['/home']"
+      >Login</ion-button
+    >
 
     <p class="login-option">Or login with:</p>
 
@@ -58,7 +60,8 @@
 
   <div class="sign-up">
     <p>
-      Dont have an account? <span><a href="">Sign up!</a> </span>
+      Dont have an account?
+      <span><a [routerLink]="['/register']">Sign up!</a> </span>
     </p>
   </div>
 </ion-content>

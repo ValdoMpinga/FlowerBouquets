@@ -6,6 +6,7 @@ import { FlowerScreenPage } from './flower-screen.page';
 
 import { FlowerScreenPageRoutingModule } from './flower-screen-routing.module';
 import { SideMenuModule } from '../components/side-menu/side-menu.module';
+import { CartBadgeModule } from '../components/cart-badge/cart-badge.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { SideMenuModule } from '../components/side-menu/side-menu.module';
     IonicModule,
     FlowerScreenPageRoutingModule,
     SideMenuModule,
+    CartBadgeModule
   ],
   declarations: [FlowerScreenPage],
 })

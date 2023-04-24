@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CartService } from '../../services/cart.service';
+import { AlertController } from '@ionic/angular';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-cart-item',
@@ -8,18 +11,56 @@ import { Component, OnInit, Input } from '@angular/core';
 export class CartItemComponent implements OnInit {
   quantity: number = 0;
   quantityValues: number[] = [];
+  private cartSubject = new BehaviorSubject<number>(0);
 
-  @Input() flowersImage: string =
-    'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.VJOEUC4vt5cxi8uJEbJkhwHaEo%26pid%3DApi&f=1&ipt=edcf40b8c87a9eab78af853721e55ea02968e2c22f13dc38179cdb198a850eaa&ipo=images';
-  @Input() flowersName: string = 'Tulipas';
-  @Input() flowersPrice: string = '10.99€';
-  @Input() flowersQuantity: number = 3;
+  @Input() flowersId: number = 0;
+  @Input() flowersImage: string = '';
+  @Input() flowersName: string = '';
+  @Input() flowersPrice: number = 0;
+  @Input() flowersQuantity: number = 0;
 
-  constructor() {
+  constructor(
+    private cartService: CartService,
+    private alertController: AlertController
+  ) {
     for (let i = 1; i <= 100; i++) {
       this.quantityValues.push(i);
     }
   }
 
-  ngOnInit() {}
+  onSelectChange()
+  {
+    console.log('here');    
+  }
+  async deleteCartItem() {
+    const alert = await this.alertController.create({
+      header: 'Remove flowers',
+      message: 'Are you sure you want to delete those flowers?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: () => {
+            console.log('No clicked');
+          },
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            console.log('Item deleted successfully');
+
+            this.cartService.removeItemFromCart({
+              id: this.flowersId,
+              quantity: this.flowersQuantity,
+            });
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+  ngOnInit() {
+    this.cartService.getCartSubject().subscribe(() => {});
+  }
 }
