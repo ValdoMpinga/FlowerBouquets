@@ -28,24 +28,28 @@
       </ion-toolbar>
     </ion-header>
 
-    <div class="search-bar-container">
-      <ion-searchbar
-        class="searchbar"
-        animated="true"
-        show-clear-button="focus"
-        clear-icon="trash-bin"
-        placeholder="Search"
-      ></ion-searchbar>
+    <div *ngIf="pendingNotifications.length == 0">
+      <p>empty</p>
     </div>
 
-    <app-reminder-card />
-    <app-reminder-card />
-    <app-reminder-card />
-    <app-reminder-card />
-    <app-reminder-card />
-    <app-reminder-card />
-    <app-reminder-card />
-    <app-reminder-card />
-    <app-reminder-card />
+    <div *ngIf="pendingNotifications.length > 0">
+      <div class="search-bar-container">
+        <ion-searchbar
+          class="searchbar"
+          animated="true"
+          show-clear-button="focus"
+          clear-icon="trash-bin"
+          placeholder="Search"
+        ></ion-searchbar>
+      </div>
+
+      <app-reminder-card
+        *ngFor="let pendingNotification of pendingNotifications"
+        [id]="pendingNotification.id"
+        [date]="pendingNotification.schedule?.at | date: 'MMM d, y, h:mm a'"
+        [title]="pendingNotification.title"
+        [intent]="pendingNotification.body"
+      />
+    </div>
   </ion-content>
 </div>

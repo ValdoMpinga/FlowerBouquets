@@ -32,6 +32,11 @@
     </div>
 
     <div *ngIf="totalCartItems>0">
+      <div class="loading-spinner" *ngIf="!isDataReady">
+        <h2>Cultivando as flores...</h2>
+        <ion-spinner />
+      </div>
+
       <ion-header collapse="condense">
         <ion-buttons slot="start">
           <ion-back-button default-href="/home"></ion-back-button>
@@ -57,11 +62,7 @@
         ></app-cart-item>
       </div>
 
-      <!-- <div class="extras-button-container">
-      <ion-button class="extras-button"> Add extras to cart </ion-button>
-    </div> -->
-
-      <div class="pickup-clear-cart">
+      <div class="pickup-clear-cart" (ionChange)="setPickupSelected()">
         <ion-select placeholder="Select the pickup location">
           <ion-select-option value="home">At home</ion-select-option>
           <ion-select-option value="store">At the store</ion-select-option>
@@ -73,6 +74,16 @@
       </div>
 
       <p>Total: {{totalAmountToPay}}€</p>
+
+      <div *ngIf="totalAmountToPay < 100">
+        <div class="boucing-icon-container">
+          <ion-icon
+            name="information-circle-outline"
+            class="animated-icon"
+            (click)="pointAlert()"
+          ></ion-icon>
+        </div>
+      </div>
 
       <div class="pay-button-container">
         <ion-button class="pay-button" (click)="pay()"> Pay </ion-button>

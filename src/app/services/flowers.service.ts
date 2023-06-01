@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { map, switchMap } from 'rxjs/operators';
-import { timer } from 'rxjs';
 
 export interface Flower {
   id: number;
@@ -32,7 +31,7 @@ export class FlowersService {
 
   //Starts after 5 seconds
 
-  // getFlowers(): Observable<Flower[]> {
+  //  getFlowers(): Observable<Flower[]> {
   //   return timer(5000).pipe(
   //     switchMap(() => {
   //       return this.http.get<any[]>(environment.FLOWERS_BOUQUETS_API_URL).pipe(

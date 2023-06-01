@@ -41,11 +41,11 @@
   </ion-row>   
    <ion-row class="menu-button-container">
     <ion-icon name="log-out"/>
-    <span class="menu-bottom-name">Logout</span>
+    <span class="menu-bottom-name" (click)="logout()">Logout</span>
   </ion-row>  
     <ion-row class="menu-button-container">
     <ion-icon name="close-circle"/>
-    <span class="menu-bottom-name">Exit app</span>
+    <span class="menu-bottom-name" (click)="closeApp()">Exit app</span>
   </ion-row>   
    <ion-row class="menu-button-container">
     <ion-icon name="moon"/>

@@ -50,8 +50,7 @@ export class ReminderFormPage {
             sound: 'alarm.wav',
             smallIcon: 'flowerbouquetslogo',
             largeIcon: 'flowerbouquetslogo',
-            extra: null,
-            iconColor: '#000000',
+            iconColor: '#A57C97',
           },
         ],
       });

@@ -21,6 +21,7 @@ export interface CartItemType {
   styleUrls: ['./cart.page.scss'],
 })
 export class CartPage implements OnInit {
+  isPickupSelected: boolean = false;
   flowers: Flower[] = [];
   isDataReady: boolean = false;
   filteredCartItems: CartItemType[] = [];
@@ -33,10 +34,8 @@ export class CartPage implements OnInit {
   };
   totalCartItems: number = 0;
   totalAmountToPay: number = 0;
-
   cartItems: CartItem[] = [];
   displayCartItems: CartItem[] = [];
-
   didUserWon: boolean = false;
 
   constructor(
@@ -46,6 +45,10 @@ export class CartPage implements OnInit {
     private alertController: AlertController,
     private router: Router
   ) {}
+
+  setPickupSelected() {
+    this.isPickupSelected = true;
+  }
 
   async clearCartItems() {
     const alert = await this.alertController.create({
@@ -75,41 +78,52 @@ export class CartPage implements OnInit {
   }
 
   async pay() {
-    const alert = await this.alertController.create({
-      header: 'Payment Successful',
-      message: 'Your payment was successful',
-      buttons: [
-        {
-          text: 'OK',
-          handler: () => {
-            this.cartService.clearCart();
-            this.didUserWon = this.pointsService.pay(this.totalAmountToPay);
+    if (!this.isPickupSelected) {
+      this.alertController
+        .create({
+          header: 'Select pickup location!',
+          message: 'You must select a pickup location before paying!',
+          buttons: ['OK'],
+        })
+        .then((alert) => alert.present());
+    } else {
+      const alert = await this.alertController.create({
+        header: 'Payment Successful',
+        message: 'Your payment was successful',
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              this.cartService.clearCart();
+              this.didUserWon = this.pointsService.pay(this.totalAmountToPay);
 
-            if (this.didUserWon) {
-              console.log('user won');
-              setTimeout(() => {
-                confetti({
-                  particleCount: 100,
-                  spread: 70,
-                  origin: { y: 0.6 },
+              if (this.didUserWon) {
+                console.log('user won');
+                setTimeout(() => {
+                  confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                  });
+                  this.alertController
+                    .create({
+                      header: 'Congratulations!',
+                      message:
+                        'You have won 10 points! You can check them on the side menu!',
+                      buttons: ['OK'],
+                    })
+                    .then((alert) => alert.present());
                 });
-                this.alertController
-                  .create({
-                    header: 'Congratulations!',
-                    message: 'You have won 10 points! You can check them on the side menu!',
-                    buttons: ['OK'],
-                  })
-                  .then((alert) => alert.present());
-              });
-            }
+              }
 
-            this.router.navigate(['/home']);
+              this.router.navigate(['/home']);
+            },
           },
-        },
-      ],
-    });
+        ],
+      });
 
-    await alert.present();
+      await alert.present();
+    }
   }
 
   getCartItems() {
@@ -118,10 +132,20 @@ export class CartPage implements OnInit {
     });
   }
 
-  cartItemsSetup() {
+  pointAlert() {
+    this.alertController
+      .create({
+        header: 'Points!',
+        message:
+          'If you make a purchase of 100€ or more you will win points that will enable you to get free items on the future!',
+        buttons: ['OK'],
+      })
+      .then((alert) => alert.present());
+  }
+
+  async cartItemsSetup() {
     this.flowersService.getFlowers().subscribe((data) => {
       this.flowers = data;
-      this.isDataReady = true;
       this.cartItems.forEach((item) => {
         this.filteredCartItems.push(
           this.flowers
@@ -141,11 +165,17 @@ export class CartPage implements OnInit {
     });
   }
 
-  ngOnInit() {
+  async ngOnInit() {
+    console.log(this.isDataReady);
+
     this.cartService.getCartSubject().subscribe((total) => {
       this.totalCartItems = total;
-      this.cartItemsSetup();
+      this.cartItemsSetup().then(() => {
+        this.isDataReady = true;
+        console.log(this.isDataReady);
+      });
     });
+    console.log(this.isDataReady);
 
     if (this.totalCartItems > 0) {
       this.getCartItems();
