@@ -28,8 +28,15 @@
       </ion-toolbar>
     </ion-header>
 
-    <div *ngIf="pendingNotifications.length == 0">
-      <p>empty</p>
+    <div class="empty-reminders-list" *ngIf="pendingNotifications.length == 0">
+      <ion-icon name="alarm-outline"></ion-icon>
+      <p class="message">
+        No reminders yet? That's okay, you can create some!
+      </p>
+
+      <ion-button class="create-reminder-button" [routerLink]="['/reminder-form']">
+        Create reminder
+      </ion-button>
     </div>
 
     <div *ngIf="pendingNotifications.length > 0">
