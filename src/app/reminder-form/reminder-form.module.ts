@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { ReminderFormPageRoutingModule } from './reminder-form-routing.module';
@@ -15,6 +15,7 @@ import { SideMenuModule } from '../components/side-menu/side-menu.module';
     IonicModule,
     ReminderFormPageRoutingModule,
     SideMenuModule,
+    ReactiveFormsModule
   ],
   declarations: [ReminderFormPage],
 })

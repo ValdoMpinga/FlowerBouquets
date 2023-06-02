@@ -27,49 +27,47 @@
       </ion-toolbar>
     </ion-header>
 
-    <div class="register-input-container">
+    <form [formGroup]="reminderFormGroup" class="register-input-container">
       <ion-item fill="solid">
         <ion-label position="floating">Title</ion-label>
         <ion-input
           type="name"
+          formControlName="reminderTitle"
           placeholder="Enter full name"
           [(ngModel)]="title"
         />
       </ion-item>
+      <ion-text
+        class=""
+        color="danger"
+        *ngIf="isSubmitted && formControls['reminderTitle'].errors?.['required']"
+      >
+        Reminder title is required!
+      </ion-text>
 
       <ion-item fill="solid">
         <ion-label position="floating">Date and time</ion-label>
         <ion-input
           type="datetime-local"
+          formControlName="reminderDateTime"
           placeholder="Enter email"
           [(ngModel)]="dateTime"
         />
       </ion-item>
-
-      <ion-item fill="solid">
-        <ion-label position="floating">Description</ion-label>
-        <ion-input
-          type="text"
-          placeholder="Enter password"
-          [(ngModel)]="description"
-        />
-      </ion-item>
+      <ion-text
+        class=""
+        color="danger"
+        *ngIf="isSubmitted && formControls['reminderDateTime'].errors?.['required']"
+      >
+        Reminder date and time is required!
+      </ion-text>
 
       <ion-item fill="solid">
         <ion-select
-          placeholder="Select reminder frequency"
-          [(ngModel)]="frequency"
+          placeholder="Select occasion"
+          [(ngModel)]="occasion"
+          formControlName="reminderOccasion"
         >
-          <ion-select-option value="once">Just this time</ion-select-option>
-          <ion-select-option value="every-day">Every day</ion-select-option>
-          <ion-select-option value="every-week">Every Week</ion-select-option>
-          <ion-select-option value="every-month">Every month</ion-select-option>
-          <ion-select-option value="every-year">Every year</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item fill="solid">
-        <ion-select placeholder="Select occasion" [(ngModel)]="occasion">
           <ion-select-option value="birthday">Birthday</ion-select-option>
           <ion-select-option value="wedding-anniversary"
             >Wedding Anniversary</ion-select-option
@@ -90,11 +88,19 @@
           >
         </ion-select>
       </ion-item>
+      <ion-text
+        class=""
+        color="danger"
+        *ngIf="isSubmitted && formControls['reminderOccasion'].errors?.['required']"
+      >
+        Reminder occasion is required!
+      </ion-text>
 
       <ion-item fill="solid">
         <ion-select
           placeholder="Select the reminder action"
           [(ngModel)]="action"
+          formControlName="reminderAction"
         >
           <ion-select-option value="buy-flowers">Buy Flowers</ion-select-option>
           <ion-select-option value="send-flowers"
@@ -105,6 +111,13 @@
           <ion-select-option value="order-cake">Order Cake</ion-select-option>
         </ion-select>
       </ion-item>
+      <ion-text
+        class="reminder-action-error-text"
+        color="danger"
+        *ngIf="isSubmitted && formControls['reminderAction'].errors?.['required']"
+      >
+        Reminder action is required!
+      </ion-text>
 
       <ion-button
         class="register-button"
@@ -112,6 +125,6 @@
         (click)="scheduleNotification()"
         >Create</ion-button
       >
-    </div>
+    </form>
   </ion-content>
 </div>

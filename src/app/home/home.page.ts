@@ -9,8 +9,8 @@ import { CartItem, CartService } from '../services/cart.service';
 })
 export class HomePage implements OnInit {
   cartQuantity: number = 0;
-  isDataReady: boolean = false;
   cart: CartItem[] = [];
+  isDataReady: boolean = false;
   flowers: Flower[] = [];
 
   constructor(
