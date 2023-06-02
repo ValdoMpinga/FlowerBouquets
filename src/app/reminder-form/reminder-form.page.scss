@@ -21,7 +21,7 @@ ion-item {
 }
 
 ion-button {
-  margin-top: 50px;
+  margin-top: 80px;
   width: 150px;
   height: 50px;
   --background: var(--ion-color-flower-bouquets-yellow);
@@ -36,3 +36,11 @@ ion-list{
 .select{
     height: 40px;
 }
+
+ion-text{
+  color: var(--ion-color-flower-bouquets-yellow);
+  margin-top: 4px;
+  font-weight: bold;
+}
+
+
